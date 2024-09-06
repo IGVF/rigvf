@@ -1,0 +1,49 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# rigvf
+
+<!-- badges: start -->
+[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+<!-- badges: end -->
+
+Package version: `r packageVersion("rigvf")`<br/>
+Compiled date: `r Sys.Date()`
+
+This proof-of-concept uses the ArangoDB REST API to access the Impact
+of Genomic Variation on Function ('IGVF') data portal
+(<https://data.igvf.org/>).
+
+## Installation
+
+install the development version from [GitHub](https://github.com/)
+with:
+
+``` r
+## install.packages("pak")
+pak::pak("mtmorgan/rigvf")
+```
+
+## Example
+
+There is limited functionality implemented, the most useful of which
+is the location of variants associated with a particular gene.
+
+```{r example}
+rigvf::gene_variants("ENSG00000106633", threshold = 0.85)
+```
+
+The help page `?queries` outlines other available user-facing
+functions. See `?arango` for more developer-oriented information.
