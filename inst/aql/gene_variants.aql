@@ -1,0 +1,4 @@
+FOR l IN regulatory_regions_genes
+    FILTER l._to == @geneid
+    FILTER l.`score:long` > @threshold
+    RETURN l

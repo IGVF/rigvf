@@ -1,0 +1,25 @@
+Package: rigvf
+Title: Interface to the Impact of Genomic Variation on Function
+    ('IGVF') Data Portal
+Version: 0.0.0.9000
+Authors@R:
+    c(person(
+        "Martin", "Morgan", role = "aut",
+        email = "mtmorgan.xyz@gmail.com",
+        comment = c(ORCID = "0000-0002-5874-8148")
+    ), person(
+        "Michael", "Love", role = c("aut", "cre"),
+        email = "michaelisaiahlove@gamil.com",
+        comment = c(ORCID = "0000-0001-8401-0545")
+    ))
+Description: The 'IGVF' data portal provides experimentally-derived
+    information on the impact of genomic variants on gene
+    function. The 'rigvf' package provides an interface to this
+    resource, allowing easy integration with 'Bioconductor' resources
+    for variant annotation.
+License: Artistic-2.0
+Imports: httr2, rjsoncons, dplyr, tidyr, memoise, cachem, whisker,
+    jsonlite
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.2
