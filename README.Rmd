@@ -22,28 +22,62 @@ knitr::opts_chunk$set(
 Package version: `r packageVersion("rigvf")`<br/>
 Compiled date: `r Sys.Date()`
 
-This proof-of-concept uses the ArangoDB REST API to access the Impact
-of Genomic Variation on Function ('IGVF') data portal
-(<https://data.igvf.org/>).
+This proof-of-concept illustrates how to access the Impact of Genomic
+Variation on Function ('IGVF') data portal
+(<https://data.igvf.org/>). Only limited functionality is implemented.
 
 ## Installation
 
-install the development version from [GitHub](https://github.com/)
-with:
+Install the development version from
+[GitHub](https://github.com/mtmorgan/rigvf) with:
 
 ``` r
 ## install.packages("pak")
 pak::pak("mtmorgan/rigvf")
 ```
 
-## Example
+## Catalog
 
-There is limited functionality implemented, the most useful of which
-is the location of variants associated with a particular gene.
+The IGVF offers two interfaces. The 'catalog'
+<https://api.catalog.igvf.org/#> is prefered, with optimized queries
+of relevant information. Queries are simple REST requests implemented
+using the httr2 package. Here we query variants associated with "GCK";
+one could also use, e.g., Ensembl identifiers.
 
-```{r example}
-rigvf::gene_variants("ENSG00000106633", threshold = 0.85)
+```{r catalog}
+rigvf::gene_variants(gene_name = "GCK")
+
+response <- rigvf::gene_variants(gene_id = "ENSG00000106633", verbose = TRUE)
+response
+
+response |>
+    dplyr::select(`sequence variant`) |>
+    tidyr::unnest_wider(`sequence variant`)
 ```
 
-The help page `?queries` outlines other available user-facing
+## ArangoDB
+
+The 'ArangoDB' REST API provides flexibility but requires greater
+understanding of Arango Query Language and the database
+schema. Documentation is available in the [database][] under the
+'Support' menu item 'REST API' tab using username 'guest' and password
+'guestigvfcatalog'.
+
+[database]: https://db.catalog.igvf.org/_db/igvf/_admin/aardvark/index.html#support
+
+The following directly queries the database for variants of an Ensembl
+gene id.
+
+```{r example}
+rigvf::db_gene_variants("ENSG00000106633", threshold = 0.85)
+```
+
+The AQL is
+
+```{r}
+aql <- system.file(package = "rigvf", "aql", "gene_variants.aql")
+readLines(aql) |> noquote()
+```
+
+The help page `?db_queries` outlines other available user-facing
 functions. See `?arango` for more developer-oriented information.

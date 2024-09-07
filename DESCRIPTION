@@ -1,7 +1,7 @@
 Package: rigvf
 Title: Interface to the Impact of Genomic Variation on Function
     ('IGVF') Data Portal
-Version: 0.0.0.9000
+Version: 0.0.0.9001
 Authors@R:
     c(person(
         "Martin", "Morgan", role = "aut",
