@@ -1,7 +1,7 @@
 Package: rigvf
 Title: Interface to the Impact of Genomic Variation on Function
     ('IGVF') Data Portal
-Version: 0.0.0.9001
+Version: 0.0.0.9002
 Authors@R:
     c(person(
         "Martin", "Morgan", role = "aut",
@@ -18,8 +18,8 @@ Description: The 'IGVF' data portal provides experimentally-derived
     resource, allowing easy integration with 'Bioconductor' resources
     for variant annotation.
 License: Artistic-2.0
-Imports: httr2, rjsoncons, dplyr, tidyr, memoise, cachem, whisker,
-    jsonlite
+Imports: httr2, rjsoncons, dplyr, tidyr, rlang, memoise, cachem,
+    whisker, jsonlite
 URL: https://mtmorgan.github.io/rigvf/
 BugReports: https://github.com/mtmorgan/rigvf/issues
 Encoding: UTF-8
@@ -27,5 +27,7 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.2
 Suggests: 
     knitr,
-    rmarkdown
+    rmarkdown,
+    testthat (>= 3.0.0)
 VignetteBuilder: knitr
+Config/testthat/edition: 3

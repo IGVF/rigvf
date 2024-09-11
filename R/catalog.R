@@ -56,8 +56,14 @@ gene_variants <-
         alias = NULL,
         organism = "Homo sapiens",
         verbose = FALSE)
-{    
-    ## FIXME: validate only one form of identifier provided
+{
+    organism <- match.arg(organism)
+    stopifnot(
+        `only one of 'gene_id', 'hgnc', 'gene_name', 'alias' must be non-NULL` =
+            oneof_is_scalar_character(gene_id, hgnc, gene_name, alias),
+        is_scalar_logical(verbose)
+    )
+        
     response <- catalog_request(
         "genes/variants",
         gene_id = gene_id,

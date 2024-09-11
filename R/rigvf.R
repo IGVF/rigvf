@@ -1,3 +1,42 @@
+## argument validation; don't allow NA or zero-length scalar
+## characters
+
+is_scalar_logical <-
+    function(...)
+{
+    rlang::is_scalar_logical(...) &&
+        !is.na(...)
+}
+
+is_scalar_integer <-
+    function(...)
+{
+    rlang::is_scalar_integer(...) &&
+        !is.na(...)
+}
+
+is_scalar_double <-
+    function(...)
+{
+    rlang::is_scalar_double(...) &&
+        !is.na(...)
+}
+
+is_scalar_character <-
+    function(...)
+{
+    rlang::is_scalar_character(...) &&
+        !is.na(...) &&
+        nzchar(...)
+}
+
+oneof_is_scalar_character <-
+    function(...)
+{
+    test <- unlist(list(...)) # drop NULL arguments
+    is_scalar_character(test)
+}
+
 #' @rdname rigvf
 #'
 #' @name rigvf
@@ -22,11 +61,13 @@ rigvf_config <- local({
         base::ls(env)
     }
     get <- function(key) {
+        stopifnot(is_scalar_character(key))
         if (!key %in% ls())
             stop("ArangoDB key '", key, "' not yet set")
         env[[key]]
     }
     set <- function(key, value) {
+        stopifnot(is_scalar_character(key))
         if (!is.null(value)) {
             env[[key]] <- value
             get(key)
@@ -35,6 +76,7 @@ rigvf_config <- local({
         }
     }
     unset <- function(key) {
+        stopifnot(is_scalar_character(key))
         if (!key %in% ls()) {
             warning("ArangoDB unset key '", key, "' does not exist")
         } else {
@@ -51,6 +93,8 @@ rigvf_config <- local({
     ## functionality
     list(ls = ls, get = get, set = set)
 })
+
+## generalized API request
 
 rigvf_request <-
     function(base_url, path, ..., body = NULL, jwt_token = NULL)

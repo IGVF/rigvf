@@ -19,6 +19,11 @@ db_edges <-
         username = rigvf_config$get("username"),
         password = rigvf_config$get("password"))
 {
+    stopifnot(
+        is_scalar_character(username),
+        is_scalar_character(password)
+    )
+
     collections <- arango_collections(username, password)
     tbl <- filter(collections, .data$type == "edge")
     tbl <- select(tbl, "name", "count")
@@ -36,6 +41,11 @@ db_nodes <-
         username = rigvf_config$get("username"),
         password = rigvf_config$get("password"))
 {
+    stopifnot(
+        is_scalar_character(username),
+        is_scalar_character(password)
+    )
+
     collections <- arango_collections(username, password)
     tbl <- filter(
         collections, .data$type == "node", !startsWith(.data$name, "_")
@@ -70,6 +80,13 @@ db_gene_variants <-
         password = rigvf_config$get("password")
     )
 {
+    stopifnot(
+        is_scalar_character(gene_id),
+        is_scalar_integer(threshold) || is_scalar_double(threshold),
+        is_scalar_character(username),
+        is_scalar_character(password)
+    )
+
     query <- paste(aql_template("gene_variants"), collapse = "\n")
     response <- arango_cursor(
         query,
