@@ -1,42 +1,24 @@
 ---
-output: github_document
+title: "Accessing IGVF"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Accessing IGVF}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
 ---
-
-<!-- README.md is generated from README.Rmd. Please edit that file -->
 
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
-  comment = "#>",
-  fig.path = "man/figures/README-",
-  out.width = "100%"
+  comment = "#>"
 )
 ```
-
-# rigvf
-
-<!-- badges: start -->
-[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
-<!-- badges: end -->
-
-Package version: `r packageVersion("rigvf")`<br/>
-Compiled date: `r Sys.Date()`
 
 This proof-of-concept illustrates how to access the Impact of Genomic
 Variation on Function ('IGVF') data portal
 (<https://data.igvf.org/>). Only limited functionality is implemented.
 
-## Installation
-
-Install the development version from
-[GitHub](https://github.com/mtmorgan/rigvf) with:
-
-``` r
-## install.packages("pak")
-pak::pak("mtmorgan/rigvf")
-```
-
-## Catalog
+# Catalog
 
 The IGVF offers two interfaces. The 'catalog'
 <https://api.catalog.igvf.org/#> is prefered, with optimized queries
@@ -55,7 +37,7 @@ response |>
     tidyr::unnest_wider(`sequence variant`)
 ```
 
-## ArangoDB
+# ArangoDB
 
 The 'ArangoDB' REST API provides flexibility but requires greater
 understanding of Arango Query Language and the database

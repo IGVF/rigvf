@@ -20,6 +20,12 @@ Description: The 'IGVF' data portal provides experimentally-derived
 License: Artistic-2.0
 Imports: httr2, rjsoncons, dplyr, tidyr, memoise, cachem, whisker,
     jsonlite
+URL: https://mtmorgan.github.io/rigvf/
+BugReports: https://github.com/mtmorgan/rigvf/issues
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.2
+Suggests: 
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
