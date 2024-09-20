@@ -1,8 +1,8 @@
 ---
-title: "Accessing IGVF"
+title: "Accessing data from the IGVF Catalog"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Accessing IGVF}
+  %\VignetteIndexEntry{Accessing data from the IGVF Catalog}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -14,9 +14,23 @@ knitr::opts_chunk$set(
 )
 ```
 
-This proof-of-concept illustrates how to access the Impact of Genomic
-Variation on Function ('IGVF') data portal
-(<https://data.igvf.org/>). Only limited functionality is implemented.
+# IGVF background
+
+The [Impact of Genomic Variation on Function (IGVF)](https://igvf.org/) 
+Consortium,
+
+> aims to understand how genomic variation affects genome function, which in
+> turn impacts phenotype. The NHGRI is funding this collaborative program that
+> brings together teams of investigators who will use state-of-the-art
+> experimental and computational approaches to model, predict, characterize and
+> map genome function, how genome function shapes phenotype, and how these
+> processes are affected by genomic variation. These joint efforts will produce
+> a catalog of the impact of genomic variants on genome function and phenotypes. 
+
+# This package
+
+This proof-of-concept illustrates how to access the IGVF Catalog.
+Only limited functionality is implemented.
 
 # Catalog
 
@@ -63,3 +77,7 @@ readLines(aql) |> noquote()
 
 The help page `?db_queries` outlines other available user-facing
 functions. See `?arango` for more developer-oriented information.
+
+```{r}
+sessionInfo()
+```
