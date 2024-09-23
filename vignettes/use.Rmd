@@ -27,14 +27,30 @@ Consortium,
 > processes are affected by genomic variation. These joint efforts will produce
 > a catalog of the impact of genomic variants on genome function and phenotypes. 
 
+The *IGVF Catalog* described in the last sentence is available through a number
+of interfaces, including a [web interface](https://catalog.igvf.org/) as well as 
+two programmatic interfaces. In addition, there is a *Data Portal*, where raw
+and processed data can be downloaded, with its own
+[web interface](https://data.igvf.org/) and 
+[programmatic interface](https://github.com/IGVF-DACC/igvf-r-client). 
+This package, `rigvf`, focuses on the *Catalog* and not the *Data Portal*.
+
+The *IGVF Catalog* is a form of *knowledge graph*, where the nodes are
+biological entities such as variants, genes, pathways, etc. and edges are
+relationships between such nodes, e.g. empirically measured effects of variants
+on *cis*-regulatory elements (CREs) or on transcripts and proteins. These edges
+may have metadata including information about cell type context and information
+about how the association was measured, e.g. which experiment or predictive
+model.
+
 # This package
 
 This proof-of-concept illustrates how to access the IGVF Catalog.
 Only limited functionality is implemented.
 
-# Catalog
+# Catalog API
 
-The IGVF offers two interfaces. The 'catalog'
+The IGVF offers two programmatic interfaces. The 'catalog'
 <https://api.catalog.igvf.org/#> is prefered, with optimized queries
 of relevant information. Queries are simple REST requests implemented
 using the httr2 package. Here we query variants associated with "GCK";
@@ -51,7 +67,7 @@ response |>
     tidyr::unnest_wider(`sequence variant`)
 ```
 
-# ArangoDB
+# ArangoDB API
 
 The 'ArangoDB' REST API provides flexibility but requires greater
 understanding of Arango Query Language and the database

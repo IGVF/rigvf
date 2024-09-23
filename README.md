@@ -5,8 +5,8 @@
 <!-- badges: end -->
 
 This proof-of-concept illustrates how to access the Impact of Genomic
-Variation on Function ('IGVF') data portal
-(<https://data.igvf.org/>). Only limited functionality is implemented.
+Variation on Function ('IGVF') Catalog from R.
+Only limited functionality is currently implemented.
 
 ## Installation
 
@@ -20,6 +20,6 @@ pak::pak("mtmorgan/rigvf")
 
 ## Use
 
-See the [Accessing IGVF][] vignette for basic use.
+See the [Accessing data from the IGVF Catalog][] vignette for basic use.
 
-[Accessing IGVF]: ./articles/use.html
+[Accessing data from the IGVF Catalog]: ./articles/use.html
