@@ -22,4 +22,4 @@ pak::pak("mtmorgan/rigvf")
 
 See the [Accessing data from the IGVF Catalog][] vignette for basic use.
 
-[Accessing data from the IGVF Catalog]: ./articles/use.html
+[Accessing data from the IGVF Catalog]: https://mtmorgan.github.io/rigvf/articles/use.html
