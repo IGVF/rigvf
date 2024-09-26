@@ -11,11 +11,11 @@ Only limited functionality is currently implemented.
 ## Installation
 
 Install the development version from
-[GitHub](https://github.com/mtmorgan/rigvf) with:
+[GitHub](https://github.com/IGVF/rigvf) with:
 
 ``` r
 ## install.packages("pak")
-pak::pak("mtmorgan/rigvf")
+pak::pak("IGVF/rigvf")
 ```
 
 ## Use
