@@ -3,7 +3,7 @@ pkgdown: 2.1.1
 pkgdown_sha: ~
 articles:
   use: use.html
-last_built: 2025-02-19T15:16Z
+last_built: 2025-02-19T23:10Z
 urls:
   reference: https://mtmorgan.github.io/rigvf/reference
   article: https://mtmorgan.github.io/rigvf/articles
