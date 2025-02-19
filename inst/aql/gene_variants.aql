@@ -1,4 +1,4 @@
-FOR l IN regulatory_regions_genes
+FOR l IN genomic_elements_genes
     FILTER l._to == @geneid
-    FILTER l.`score:long` > @threshold
+    FILTER l.`score` > @threshold
     RETURN l
