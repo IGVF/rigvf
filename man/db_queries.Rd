@@ -4,7 +4,8 @@
 \alias{db_edges}
 \alias{db_nodes}
 \alias{db_gene_variants}
-\title{Query the 'IGVF' 'ArangoDB'}
+\alias{db_gene_elements}
+\title{Query the IGVF Catalog via ArangoDB}
 \usage{
 db_edges(
   username = rigvf_config$get("username"),
@@ -22,6 +23,13 @@ db_gene_variants(
   username = rigvf_config$get("username"),
   password = rigvf_config$get("password")
 )
+
+db_gene_elements(
+  gene_id,
+  threshold,
+  username = rigvf_config$get("username"),
+  password = rigvf_config$get("password")
+)
 }
 \arguments{
 \item{username}{character(1) ArangoDB user name. Default: "guest".}
@@ -33,14 +41,17 @@ script, so \code{password = Sys.getenv("RIGVF_ARANGODB_PASSWORD")}.}
 
 \item{gene_id}{character(1) Ensembl gene identifier.}
 
-\item{threshold}{numeric(1) minimum score associated with the
-variant.}
+\item{threshold}{numeric(1) minimum association statistic, minus log10
+p-value for variants, and score for elements.}
 }
 \value{
 \code{edges()} and \code{nodes()} return a tibble with the edge or
 node name and count of occurrences in the database.
 
 \code{db_gene_variants()} returns a tibble summarizing variants
+associated with the gene.
+
+\code{db_gene_elements()} returns a tibble summarizing genomic elements
 associated with the gene.
 }
 \description{
@@ -49,12 +60,17 @@ data base.
 
 \code{db_gene_variants()} locates variants associated with a
 (Ensembl) gene identifier.
+
+\code{db_gene_elements()} locates genomic elements associated with a
+(Ensembl) gene identifier.
 }
 \examples{
 db_edges()
 
 db_nodes()
 
-db_gene_variants("ENSG00000106633", 0.85)
+db_gene_variants("ENSG00000106633", threshold = 4.0)
+
+db_gene_elements("ENSG00000106633", threshold = 0.5)
 
 }

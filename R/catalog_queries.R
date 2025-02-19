@@ -7,17 +7,15 @@ catalog_request <-
     )
 }
 
-#' @rdname catalog
+#' @rdname catalog_queries
 #'
-#' @name catalog
+#' @title Query the IGVF Catalog REST API
 #'
-#' @title Query the 'IGVF' REST API
-#'
-#' @description This page documents functions using the IGVF 'REST'
+#' @description This page documents functions using the IGVF REST
 #'     API, documented at <https://api.catalog.igvf.org/#>
 #'
-#' @description `gene_variants()` locates GTEx eQTLs and splice QTLs
-#'     associate with a gene using the IGVF 'catalog' API. Only one of
+#' @description `gene_variants()` locates variants
+#'     associated with a gene using the IGVF Catalog API. Only one of
 #'     `gene_id`, `hgnc`, `gene_name`, or `alias` should be specified.
 #'
 #' @param gene_id character(1) Ensembl gene identifier, e.g., "ENSG00000106633"
@@ -41,11 +39,13 @@ catalog_request <-
 #' @examples
 #' gene_variants(gene_name = "GCK")
 #'
-#' response <- gene_variants(gene_name = "GCK", verbose = TRUE)
-#' response
-#' response |>
-#'     dplyr::select(`sequence variant`) |>
-#'     tidyr::unnest_wider(`sequence variant`)
+#' gene_variants(gene_name = "GCK", verbose = TRUE)
+#' 
+#' res <- rigvf::gene_elements(gene_id="ENSG00000187961")
+#' res
+#' res |>
+#'     dplyr::select(regions) |>
+#'     tidyr::unnest_wider(regions)
 #'
 #' @export
 gene_variants <-
@@ -71,6 +71,33 @@ gene_variants <-
         gene_name = gene_name,
         alias = alias,
         organism = organism,
+        verbose = tolower(as.character(verbose))
+    )
+    j_pivot(response, as = "tibble")
+}
+
+#' @rdname catalog_queries
+#' 
+#' @description `gene_elements()` locates elements
+#'     associated with a gene using the IGVF Catalog API.
+#'
+#' @return `gene_elements()` returns a tibble describing elements
+#'     associated with the gene; use `verbose = TRUE` to retrieve more
+#'     extensive information.
+#'
+#' @export
+gene_elements <-
+    function(
+        gene_id = NULL,
+        verbose = FALSE)
+{
+    stopifnot(
+        is_scalar_logical(verbose)
+    )
+        
+    response <- catalog_request(
+        "genes/genomic-elements",
+        gene_id = gene_id,
         verbose = tolower(as.character(verbose))
     )
     j_pivot(response, as = "tibble")

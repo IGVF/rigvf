@@ -45,26 +45,34 @@ model.
 
 # This package
 
-This proof-of-concept illustrates how to access the IGVF Catalog.
-Only limited functionality is implemented.
+This package provides access to some of the IGVF Catalog from within R.
+Currently, limited functionality is implemented, with priority towards
+applications and integration with Bioconductor functionality.
 
 # Catalog API
 
 The IGVF offers two programmatic interfaces. The 'catalog'
 <https://api.catalog.igvf.org/#> is prefered, with optimized queries
 of relevant information. Queries are simple REST requests implemented
-using the httr2 package. Here we query variants associated with "GCK";
+using the *httr2* package. Here we query variants associated with "GCK";
 one could also use, e.g., Ensembl identifiers.
 
-```{r catalog}
+```{r catalog_variants}
 rigvf::gene_variants(gene_name = "GCK")
+```
 
-response <- rigvf::gene_variants(gene_id = "ENSG00000106633", verbose = TRUE)
-response
+The help page `?catalog_queries` outlines other available user-facing
+functions. For example, we can also query genomic elements 
+(e.g. candidate *cis* regulatory elements, or cCREs) that are 
+associated with a gene.
 
-response |>
-    dplyr::select(`sequence variant`) |>
-    tidyr::unnest_wider(`sequence variant`)
+```{r catalog_elements}
+res <- rigvf::gene_elements(gene_id = "ENSG00000187961", verbose = TRUE)
+res
+
+res |>
+    dplyr::select(`regions`) |>
+    tidyr::unnest_wider(`regions`)
 ```
 
 # ArangoDB API
