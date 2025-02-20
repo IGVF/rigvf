@@ -1,4 +1,6 @@
 #' @rdname db_queries
+#' 
+#' @name db_queries
 #'
 #' @title Query the IGVF Catalog via ArangoDB
 #'

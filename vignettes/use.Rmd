@@ -53,9 +53,9 @@ applications and integration with Bioconductor functionality.
 
 The IGVF offers two programmatic interfaces. The [Catalog API][]
 is preferred, with optimized queries of relevant information. 
-Queries are simple REST requests implemented
-using the *httr2* package. Here we query variants associated with "GCK";
-one could also use, e.g., Ensembl identifiers.
+Queries are simple REST requests implemented using the *httr2* package. 
+Here we query variants associated with "GCK"; one could also use, e.g., 
+Ensembl identifiers.
 
 [Catalog API]: https://api.catalog.igvf.org/#
 
