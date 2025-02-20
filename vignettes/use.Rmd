@@ -51,11 +51,13 @@ applications and integration with Bioconductor functionality.
 
 # Catalog API
 
-The IGVF offers two programmatic interfaces. The 'catalog'
-<https://api.catalog.igvf.org/#> is prefered, with optimized queries
-of relevant information. Queries are simple REST requests implemented
+The IGVF offers two programmatic interfaces. The [Catalog API][]
+is preferred, with optimized queries of relevant information. 
+Queries are simple REST requests implemented
 using the *httr2* package. Here we query variants associated with "GCK";
 one could also use, e.g., Ensembl identifiers.
+
+[Catalog API]: https://api.catalog.igvf.org/#
 
 ```{r catalog_variants}
 rigvf::gene_variants(gene_name = "GCK")
@@ -77,7 +79,7 @@ res |>
 
 # ArangoDB API
 
-The 'ArangoDB' REST API provides flexibility but requires greater
+The ArangoDB API provides flexibility but requires greater
 understanding of Arango Query Language and the database
 schema. Documentation is available in the [database][] under the
 'Support' menu item 'REST API' tab using username 'guest' and password
