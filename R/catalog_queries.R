@@ -45,9 +45,10 @@ range_to_string <-
 #' @param effect_size character(1) Optional string used for thresholding on 
 #' the effect size of the variant on the gene. See 'log10pvalue'. E.g., "gt:0.5"
 #' 
-#' @param page when there are more response items than `limit`, offers pagination
+#' @param page integer(1) when there are more response items than `limit`, offers pagination.
+#' starts on page 0L, next is 1L, ...
 #'  
-#' @param limit the limit parameter controls the page size and can not exceed 1000
+#' @param limit integer(1) the limit parameter controls the page size and can not exceed 1000
 #'
 #' @param verbose logical(1) return additional information about
 #'     variants and genes

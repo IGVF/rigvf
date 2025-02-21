@@ -32,8 +32,10 @@ of interfaces, including a [web interface](https://catalog.igvf.org/) as well as
 two programmatic interfaces. In addition, there is a *Data Portal*, where raw
 and processed data can be downloaded, with its own
 [web interface](https://data.igvf.org/) and 
-[programmatic interface](https://github.com/IGVF-DACC/igvf-r-client). 
+[client library](https://github.com/IGVF-DACC/igvf-r-client) for R. 
 This package, `rigvf`, focuses on the *Catalog* and not the *Data Portal*.
+
+## Knowledge graph of variant function
 
 The *IGVF Catalog* is a form of *knowledge graph*, where the nodes are
 biological entities such as variants, genes, pathways, etc. and edges are
@@ -43,15 +45,19 @@ may have metadata including information about cell type context and information
 about how the association was measured, e.g. which experiment or predictive
 model.
 
-# This package
+## The *rigvf* package
 
-This package provides access to some of the IGVF Catalog from within R.
-Currently, limited functionality is implemented, with priority towards
-applications and integration with Bioconductor functionality.
+This package provides access to some of the IGVF Catalog from within 
+R/Bioconductor. Currently, limited functionality is implemented, 
+with priority towards applications and integration with Bioconductor 
+functionality. However, the [source code](https://github.com/IGVF/rigvf)
+and internal functions can also be used to build one-off querying 
+functions.
 
 # Catalog API
 
-The IGVF offers two programmatic interfaces. The [Catalog API][]
+The IGVF Catalog offers two programmatic interfaces, the Catalog API and 
+an ArangoDb interface, described further below. The [Catalog API][]
 is preferred, with optimized queries of relevant information. 
 Queries are simple REST requests implemented using the *httr2* package. 
 Here we query variants associated with "GCK"; one could also use, e.g., 
@@ -59,15 +65,23 @@ Ensembl identifiers.
 
 [Catalog API]: https://api.catalog.igvf.org/#
 
-```{r catalog_variants}
+```{r}
 rigvf::gene_variants(gene_name = "GCK")
+```
+
+Note that we only receive a limited number of responses. We can change both
+the `page` of responses we receive and the `limit` per page:
+
+```{r}
+rigvf::gene_variants(gene_name = "GCK", page=1L)
+rigvf::gene_variants(gene_name = "GCK", limit=50L)
 ```
 
 We can also pass thresholds on the negative log10 p-value or the effect size, 
 using the following letter combinations, `gt (>), gte (>=), lt (<), lte (<=)`, 
 followed by a `:` and a value. See examples below:
 
-```{r catalog_variants_threshold}
+```{r}
 rigvf::gene_variants(gene_name = "GCK", log10pvalue="gt:5.0")
 rigvf::gene_variants(gene_name = "GCK", effect_size="gt:0.5")
 ```
@@ -79,7 +93,7 @@ Note that nested columns in the response can be widen-ed using *tidyr*.
 For example, when querying genomic elements that are associated with a gene,
 we get back nested output:
 
-```{r catalog_elements}
+```{r}
 res <- rigvf::gene_elements(gene_id = "ENSG00000187961", verbose = TRUE)
 res
 
@@ -106,7 +120,7 @@ schema. Documentation is available in the [database][] under the
 The following directly queries the database for variants of an Ensembl
 gene id.
 
-```{r example}
+```{r}
 rigvf::db_gene_variants("ENSG00000106633", threshold = 0.85)
 ```
 
@@ -135,31 +149,32 @@ rng <- data.frame(seqnames="chr1", start=10e6+1, end=10.1e6) |>
   as_granges()
 
 e <- rigvf::elements(rng, limit=200L) |>
-  filter(source != "ENCODE_EpiRaction")
+  plyranges::filter(source != "ENCODE_EpiRaction")
 e
 ```
 
 ```{r}
 tiles <- tile_ranges(rng, width=10e3) %>%
-  select(-partition) %>%
-  mutate(id = letters[seq_along(.)])
+  plyranges::select(-partition) %>%
+  plyranges::mutate(id = letters[seq_along(.)])
 
 # count overlaps of central basepair of elements in tiles
 e |>
-  anchor_center() |>
-  mutate(width = 1) |>
-  join_overlap_left(tiles) |>
+  plyranges::anchor_center() |>
+  plyranges::mutate(width = 1) |>
+  plyranges::join_overlap_left(tiles) |>
   tibble::as_tibble() |>
   dplyr::count(id)
 ```
 
-# Plot variants with *plotgardener*
+## Plot variants with *plotgardener*
 
 Below we show a simple example of plotting variants and 
 elements in a gene context, using the *plotgardener* package.
 
 ```{r}
-v <- rigvf::gene_variants(gene_name = "GCK", verbose=TRUE) |>
+# up to 200 variants:
+v <- rigvf::gene_variants(gene_name = "GCK", limit=200L, verbose=TRUE) |>
   dplyr::select(-c(gene, chr, source, source_url)) |>
   tidyr::unnest_wider(`sequence variant`) |>
   dplyr::rename(seqnames = chr) |>
@@ -172,15 +187,15 @@ library(plotgardener)
 par <- pgParams(
   chrom = "chr7",
   chromstart = 44.1e6,
-  chromend = 44.2e6,
+  chromend = 44.25e6,
   assembly = "hg38",
   just = c("left", "bottom")
 )
 ```
 
-To match with the correct gene annotation, we could explicitly define the `TxDb` 
+(To match with the correct gene annotation, we could explicitly define the `TxDb` 
 using `plotgardener::assembly()`, providing a database built by running 
-`GenomicFeatures::makeTxDbFromGFF()` on a GENCODE GTF file.
+`GenomicFeatures::makeTxDbFromGFF()` on a GENCODE GTF file.)
 
 ```{r}
 gene_hilite <- data.frame(
@@ -190,16 +205,42 @@ gene_hilite <- data.frame(
 ```
 
 ```{r}
-pageCreate(width = 5, height = 4, showGuides = TRUE)
+v_for_plot <- v |>
+  plyranges::select(snp = rsid, log10pvalue, effect_size) |>
+  plyranges::mutate(p = 10^-log10pvalue)
+```
+
+```{r fig.dim = c(5, 4)}
+pageCreate(width = 5, height = 4, showGuides = FALSE)
 plotGenes(
-  params = par, x = 0.5, y = 3.5, width = 4, height = 1
-#  geneHighlights = gene_hilite
+  params = par, x = 0.5, y = 3.5, width = 4, height = 1,
+  geneHighlights = gene_hilite
 )
 plotGenomeLabel(
-  params = par, x = 0.5, y = 3.5, length = 4,
+  params = par,
+  x = 0.5, y = 3.5, length = 4,
   just = c("left", "top")
 )
+mplot <- plotManhattan(
+  params = par, x = 0.5, y = 2.5, width = 4, height = 2,
+  v_for_plot, 
+  sigVal = 5e-8, sigLine = TRUE, col = "grey", lty = 2
+)
+annoYaxis(
+    plot = mplot, at=0:4 * 4, axisLine = TRUE, fontsize = 8
+)
+annoXaxis(
+    plot = mplot, axisLine = TRUE, label = FALSE
+)
+plotText(
+    params = par,
+    label = "-log10(p-value)", x = 0.2, y = 2, rot = 90,
+    fontsize = 8, fontface = "bold",
+    default.units = "inches"
+)
 ```
+
+# Session info
 
 ```{r}
 sessionInfo()

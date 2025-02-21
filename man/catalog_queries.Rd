@@ -62,9 +62,10 @@ following and a value, e.g., "gt:5.0"}
 \item{effect_size}{character(1) Optional string used for thresholding on
 the effect size of the variant on the gene. See 'log10pvalue'. E.g., "gt:0.5"}
 
-\item{page}{when there are more response items than \code{limit}, offers pagination}
+\item{page}{integer(1) when there are more response items than \code{limit}, offers pagination.
+starts on page 0L, next is 1L, ...}
 
-\item{limit}{the limit parameter controls the page size and can not exceed 1000}
+\item{limit}{integer(1) the limit parameter controls the page size and can not exceed 1000}
 
 \item{verbose}{logical(1) return additional information about
 variants and genes}
