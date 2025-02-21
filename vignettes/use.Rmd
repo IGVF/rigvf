@@ -66,6 +66,7 @@ Ensembl identifiers.
 [Catalog API]: https://api.catalog.igvf.org/#
 
 ```{r}
+library(rigvf)
 rigvf::gene_variants(gene_name = "GCK")
 ```
 
@@ -172,6 +173,10 @@ e |>
 Below we show a simple example of plotting variants and 
 elements in a gene context, using the *plotgardener* package.
 
+First selecting some variants around the gene *GCK* (reminder that we
+only obtain the first `limit` number of variants, see ?catalog_queries 
+for more details).
+
 ```{r}
 # up to 200 variants:
 v <- rigvf::gene_variants(gene_name = "GCK", limit=200L, verbose=TRUE) |>
@@ -181,6 +186,8 @@ v <- rigvf::gene_variants(gene_name = "GCK", limit=200L, verbose=TRUE) |>
   dplyr::mutate(start = pos + 1, end = pos + 1) |>
   as_granges()
 ```
+
+We then load *plotgardener* and define some default parameters.
 
 ```{r message=FALSE}
 library(plotgardener)
@@ -193,28 +200,25 @@ par <- pgParams(
 )
 ```
 
-(To match with the correct gene annotation, we could explicitly define the `TxDb` 
-using `plotgardener::assembly()`, providing a database built by running 
-`GenomicFeatures::makeTxDbFromGFF()` on a GENCODE GTF file.)
-
-```{r}
-gene_hilite <- data.frame(
-  gene = "GCK",
-  color = "magenta"
-)
-```
+Renaming some columns:
 
 ```{r}
 v_for_plot <- v |>
-  plyranges::select(snp = rsid, log10pvalue, effect_size) |>
-  plyranges::mutate(p = 10^-log10pvalue)
+  plyranges::select(snp = rsid, p = log10pvalue, effect_size)
 ```
+
+(To match with the correct gene annotation, we could explicitly define 
+the transcript database using `plotgardener::assembly()`, where we would
+provide a database built by running `GenomicFeatures::makeTxDbFromGFF()` 
+on a GENCODE GTF file.)
+
+Below we build the page and populate it with annotation from the *TxDb*
+used by *plotgardener* and from IGVF Catalog.
 
 ```{r fig.dim = c(5, 4)}
 pageCreate(width = 5, height = 4, showGuides = FALSE)
 plotGenes(
-  params = par, x = 0.5, y = 3.5, width = 4, height = 1,
-  geneHighlights = gene_hilite
+  params = par, x = 0.5, y = 3.5, width = 4, height = 1
 )
 plotGenomeLabel(
   params = par,
@@ -223,8 +227,8 @@ plotGenomeLabel(
 )
 mplot <- plotManhattan(
   params = par, x = 0.5, y = 2.5, width = 4, height = 2,
-  v_for_plot, 
-  sigVal = 5e-8, sigLine = TRUE, col = "grey", lty = 2
+  v_for_plot, trans = "",
+  sigVal = -log10(5e-8), sigLine = TRUE, col = "grey", lty = 2
 )
 annoYaxis(
     plot = mplot, at=0:4 * 4, axisLine = TRUE, fontsize = 8
