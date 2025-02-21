@@ -106,7 +106,8 @@ res |>
 ## GRanges-based queries
 
 The functions `elements()` and `element_genes()` take *GRanges* input ranges, 
-and `elements()` provides back the response as *GRanges*.
+and `elements()` provides back the response as *GRanges*. Note that IGVF uses 
+hg38 and USCS-style chromosome names, e.g., chr1.
 
 # ArangoDB API
 
@@ -207,10 +208,20 @@ v_for_plot <- v |>
   plyranges::select(snp = rsid, p = log10pvalue, effect_size)
 ```
 
-(To match with the correct gene annotation, we could explicitly define 
+To match with the correct gene annotation, we could explicitly define 
 the transcript database using `plotgardener::assembly()`, where we would
 provide a database built by running `GenomicFeatures::makeTxDbFromGFF()` 
-on a GENCODE GTF file.)
+on a GENCODE GTF file. Here we use one of the standard hg38 TxDb with
+UCSC-style chromosome names.
+
+```{r}
+library(TxDb.Hsapiens.UCSC.hg38.knownGene)
+# a highlighted gene:
+gene_hilite <- data.frame(
+  gene = "GCK",
+  color = "magenta"
+)
+```
 
 Below we build the page and populate it with annotation from the *TxDb*
 used by *plotgardener* and from IGVF Catalog.
@@ -218,7 +229,8 @@ used by *plotgardener* and from IGVF Catalog.
 ```{r fig.dim = c(5, 4)}
 pageCreate(width = 5, height = 4, showGuides = FALSE)
 plotGenes(
-  params = par, x = 0.5, y = 3.5, width = 4, height = 1
+  params = par, x = 0.5, y = 3.5, width = 4, height = 1,
+  geneHighlights = gene_hilite
 )
 plotGenomeLabel(
   params = par,
