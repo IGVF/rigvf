@@ -216,6 +216,7 @@ UCSC-style chromosome names.
 
 ```{r}
 library(TxDb.Hsapiens.UCSC.hg38.knownGene)
+library(org.Hs.eg.db)
 ```
 
 Below we build the page and populate it with annotation from the *TxDb*
