@@ -40,10 +40,10 @@ db_gene_elements(
 variable to record the password, rather than encoding in a
 script, so \code{password = Sys.getenv("RIGVF_ARANGODB_PASSWORD")}.}
 
-\item{gene_id}{character(1) Ensembl gene identifier.}
+\item{gene_id}{character(1) Ensembl gene identifier}
 
 \item{threshold}{numeric(1) minimum association statistic, minus log10
-p-value for variants, and score for elements.}
+p-value for variants, and score for elements}
 }
 \value{
 \code{edges()} and \code{nodes()} return a tibble with the edge or

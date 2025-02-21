@@ -7,26 +7,21 @@ catalog_request <-
     )
 }
 
+# for range queries, make e.g. chr1:101-200
 range_to_string <- 
     function(range)
 {
-    paste0(
-        as.character(seqnames(range)),
-        ":",
-        start(range),
-        "-",
-        end(range)
-    )
+    paste0(seqnames(range),":",start(range),"-",end(range))
 }
 
 #' @rdname catalog_queries
 #' 
 #' @name catalog_queries
 #'
-#' @title Query the IGVF Catalog REST API
+#' @title Query the IGVF Catalog via REST API
 #'
 #' @description This page documents functions using the IGVF REST
-#'     API, documented at <https://api.catalog.igvf.org/#>
+#'     API, documented at <https://api.catalog.igvf.org/#>.
 #'
 #' @description `gene_variants()` locates variants
 #'     associated with a gene. Only one of
@@ -34,26 +29,42 @@ range_to_string <-
 #'
 #' @param gene_id character(1) Ensembl gene identifier, e.g., "ENSG00000106633"
 #'
-#' @param hgnc character(1) HGNC identifier.
+#' @param hgnc character(1) HGNC identifier
 #'
 #' @param gene_name character(1) Gene symbol, e.g., "GCK"
 #'
 #' @param alias character(1) Gene alias
 #'
 #' @param organism character(1) Either 'Homo sapiens' (default) or
-#'     'Mus musculus'.
+#'     'Mus musculus'
+#' 
+#' @param log10pvalue character(1) The following can be used to set thresholds
+#' on the negative log10pvalue: gt (>), gte (>=), lt (<), lte (<=), with a ":"
+#' following and a value, e.g., "gt:5.0"
+#' 
+#' @param effect_size character(1) Optional string used for thresholding on 
+#' the effect size of the variant on the gene. See 'log10pvalue'. E.g., "gt:0.5"
+#' 
+#' @param page when there are more response items than `limit`, offers pagination
+#'  
+#' @param limit the limit parameter controls the page size and can not exceed 1000
 #'
 #' @param verbose logical(1) return additional information about
-#'     variants and genes.
+#'     variants and genes
 #'
 #' @return `gene_variants()` returns a tibble describing variants
 #'     associated with the gene; use `verbose = TRUE` to retrieve more
 #'     extensive information.
 #'
 #' @examples
-#' gene_variants(gene_name = "GCK")
+#' 
+#' rigvf::gene_variants(gene_name = "GCK")
+#' 
+#' rigvf::gene_variants(gene_name = "GCK", effect_size="gt:0.5")
 #'
-#' gene_variants(gene_name = "GCK", verbose = TRUE)
+#' rigvf::gene_variants(gene_name = "GCK", verbose = TRUE)
+#' 
+#' rigvf::variant_genes(spdi = "NC_000001.11:920568:G:A")
 #' 
 #' res <- rigvf::gene_elements(gene_id = "ENSG00000187961")
 #' res
@@ -62,7 +73,10 @@ range_to_string <-
 #'     tidyr::unnest_wider(regions)
 #'
 #' rng <- GenomicRanges::GRanges("chr1", IRanges::IRanges(1157520,1158189))
+#' 
 #' rigvf::elements(range = rng)
+#' 
+#' rigvf::element_genes(range = rng)
 #' 
 #' @export
 gene_variants <-
@@ -72,12 +86,20 @@ gene_variants <-
         gene_name = NULL,
         alias = NULL,
         organism = "Homo sapiens",
+        log10pvalue = NULL,
+        effect_size = NULL,
+        page = 0L,
+        limit = 25L,
         verbose = FALSE)
 {
     organism <- match.arg(organism)
     stopifnot(
         `only one of 'gene_id', 'hgnc', 'gene_name', 'alias' must be non-NULL` =
             oneof_is_scalar_character(gene_id, hgnc, gene_name, alias),
+        is.null(log10pvalue) | is_scalar_character(log10pvalue),
+        is.null(effect_size) | is_scalar_character(effect_size),
+        is_scalar_integer(page),
+        is_scalar_integer(limit),
         is_scalar_logical(verbose)
     )
         
@@ -88,10 +110,88 @@ gene_variants <-
         gene_name = gene_name,
         alias = alias,
         organism = organism,
+        log10pvalue = log10pvalue,
+        effect_size = effect_size,
+        page = page,
+        limit = limit,
         verbose = tolower(as.character(verbose))
     )
     j_pivot(response, as = "tibble")
 }
+
+#' @rdname catalog_queries
+#' 
+#' @param spdi character(1) SPDI of variant
+#' 
+#' @param hgvs character(1) HGVS of variant
+#' 
+#' @param rsid character(1) RSID of variant
+#' 
+#' @param variant_id character(1) IGVF variant ID
+#' 
+#' @param chr character(1) UCSC-style chromosome name of variant, e.g. "chr1"
+#' 
+#' @param position character(1) 0-based position of variant
+#' 
+#' @description `variant_genes()` locates genes
+#'     associated with a variant.
+#'
+#' @return `variant_genes()` returns a tibble describing genes
+#'     associated with a variant; use `verbose = TRUE` to retrieve more
+#'     extensive information.
+#'
+#' @export
+variant_genes <-
+    function(
+        spdi = NULL,
+        hgvs = NULL,
+        rsid = NULL,
+        variant_id = NULL,
+        chr = NULL,
+        position = NULL,
+        organism = "Homo sapiens",
+        log10pvalue = NULL,
+        effect_size = NULL,
+        page = 0L,
+        limit = 25L,
+        verbose = FALSE)
+{
+    organism <- match.arg(organism)
+    
+    chrpos <- if (!is.null(chr) & !is.null(pos)) {
+        paste0(chr, ":", pos)
+    } else {
+        NULL
+    }
+    
+    stopifnot(
+        `'chr' and 'position' must be both non-NULL or NULL` = !xor(is.null(chr), is.null(position)),
+        `only one of 'spdi', 'hgvs', 'rsid', 'variant_id', 'chr/position' must be non-NULL` =
+            oneof_is_scalar_character(spdi, hgvs, rsid, variant_id, chrpos),
+        is.null(log10pvalue) | is_scalar_character(log10pvalue),
+        is.null(effect_size) | is_scalar_character(effect_size),
+        is_scalar_integer(page),
+        is_scalar_integer(limit),
+        is_scalar_logical(verbose)
+    )
+    
+    response <- catalog_request(
+        "variants/genes",
+        spdi = spdi, 
+        hgvs = hgvs, 
+        rsid = rsid, 
+        variant_id = variant_id,
+        chr = chr,
+        position = position,
+        organism = organism,
+        log10pvalue = log10pvalue,
+        effect_size = effect_size,
+        page = page,
+        limit = limit,
+        verbose = tolower(as.character(verbose))
+    )
+    j_pivot(response, as = "tibble")
+    }
 
 #' @rdname catalog_queries
 #' 
@@ -106,15 +206,21 @@ gene_variants <-
 gene_elements <-
     function(
         gene_id = NULL,
+        page = 0L,
+        limit = 25L,
         verbose = FALSE)
 {
     stopifnot(
+        is_scalar_integer(page),
+        is_scalar_integer(limit),
         is_scalar_logical(verbose)
     )
         
     response <- catalog_request(
         "genes/genomic-elements",
         gene_id = gene_id,
+        page = page,
+        limit = limit,
         verbose = tolower(as.character(verbose))
     )
     j_pivot(response, as = "tibble")
@@ -125,7 +231,7 @@ gene_elements <-
 #' @description `elements()` locates genomic elements
 #'     based on a genomic range query.
 #' 
-#' @param range the query GRanges.
+#' @param range the query GRanges
 #'
 #' @return `elements()` returns a GRanges object describing elements.
 #'
@@ -135,7 +241,9 @@ gene_elements <-
 #' @export
 elements <-
     function(
-        range = NULL
+        range = NULL,
+        page = 0L,
+        limit = 25L
     )
 {
     
@@ -144,20 +252,24 @@ elements <-
     stopifnot(
         is(range, "GRanges"),
         length(range) == 1,
-        all(is.na(genome(range))) | all(genome(range) == igvf_genome)
+        all(is.na(genome(range))) | all(genome(range) == igvf_genome),
+        is_scalar_integer(page),
+        is_scalar_integer(limit)
     )
     
     response <- catalog_request(
         "genomic-elements",
-        region = range_to_string(range)
+        region = range_to_string(range),
+        page = page,
+        limit = limit
     )
         
     tib <- j_pivot(response, as = "tibble")
     
     element_ranges <- GRanges(
-        tib$chr, 
-        IRanges(tib$start, tib$end), 
-        strand="*", 
+        seqnames = tib$chr,
+        ranges = IRanges(tib$start + 1, tib$end), # API gives 0-based start 
+        strand = "*", 
         tib[,-(1:3)]
     )
     genome(element_ranges) <- igvf_genome # IGVF reference genome
@@ -176,6 +288,8 @@ elements <-
 element_genes <-
     function(
         range = NULL,
+        page = 0L,
+        limit = 25L,
         verbose = FALSE
     )
 {
@@ -186,12 +300,16 @@ element_genes <-
         is(range, "GRanges"),
         length(range) == 1,
         all(is.na(genome(range))) | all(genome(range) == igvf_genome),
+        is_scalar_integer(page),
+        is_scalar_integer(limit),
         is_scalar_logical(verbose)
     )
     
     response <- catalog_request(
         "genomic-elements/genes",
         region = range_to_string(range),
+        page = page,
+        limit = limit,
         verbose = tolower(as.character(verbose))
     )
         

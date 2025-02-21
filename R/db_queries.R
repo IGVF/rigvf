@@ -61,10 +61,10 @@ db_nodes <-
 #' @description `db_gene_variants()` locates variants associated with a
 #'     (Ensembl) gene identifier.
 #'
-#' @param gene_id character(1) Ensembl gene identifier.
+#' @param gene_id character(1) Ensembl gene identifier
 #'
 #' @param threshold numeric(1) minimum association statistic, minus log10 
-#'     p-value for variants, and score for elements.
+#'     p-value for variants, and score for elements
 #'
 #' @return `db_gene_variants()` returns a tibble summarizing variants
 #'     associated with the gene.

@@ -3,10 +3,11 @@
 \name{catalog_queries}
 \alias{catalog_queries}
 \alias{gene_variants}
+\alias{variant_genes}
 \alias{gene_elements}
 \alias{elements}
 \alias{element_genes}
-\title{Query the IGVF Catalog REST API}
+\title{Query the IGVF Catalog via REST API}
 \usage{
 gene_variants(
   gene_id = NULL,
@@ -14,35 +15,81 @@ gene_variants(
   gene_name = NULL,
   alias = NULL,
   organism = "Homo sapiens",
+  log10pvalue = NULL,
+  effect_size = NULL,
+  page = 0L,
+  limit = 25L,
   verbose = FALSE
 )
 
-gene_elements(gene_id = NULL, verbose = FALSE)
+variant_genes(
+  spdi = NULL,
+  hgvs = NULL,
+  rsid = NULL,
+  variant_id = NULL,
+  chr = NULL,
+  position = NULL,
+  organism = "Homo sapiens",
+  log10pvalue = NULL,
+  effect_size = NULL,
+  page = 0L,
+  limit = 25L,
+  verbose = FALSE
+)
 
-elements(range = NULL)
+gene_elements(gene_id = NULL, page = 0L, limit = 25L, verbose = FALSE)
 
-element_genes(range = NULL, verbose = FALSE)
+elements(range = NULL, page = 0L, limit = 25L)
+
+element_genes(range = NULL, page = 0L, limit = 25L, verbose = FALSE)
 }
 \arguments{
 \item{gene_id}{character(1) Ensembl gene identifier, e.g., "ENSG00000106633"}
 
-\item{hgnc}{character(1) HGNC identifier.}
+\item{hgnc}{character(1) HGNC identifier}
 
 \item{gene_name}{character(1) Gene symbol, e.g., "GCK"}
 
 \item{alias}{character(1) Gene alias}
 
 \item{organism}{character(1) Either 'Homo sapiens' (default) or
-'Mus musculus'.}
+'Mus musculus'}
+
+\item{log10pvalue}{character(1) The following can be used to set thresholds
+on the negative log10pvalue: gt (>), gte (>=), lt (<), lte (<=), with a ":"
+following and a value, e.g., "gt:5.0"}
+
+\item{effect_size}{character(1) Optional string used for thresholding on
+the effect size of the variant on the gene. See 'log10pvalue'. E.g., "gt:0.5"}
+
+\item{page}{when there are more response items than \code{limit}, offers pagination}
+
+\item{limit}{the limit parameter controls the page size and can not exceed 1000}
 
 \item{verbose}{logical(1) return additional information about
-variants and genes.}
+variants and genes}
 
-\item{range}{the query GRanges.}
+\item{spdi}{character(1) SPDI of variant}
+
+\item{hgvs}{character(1) HGVS of variant}
+
+\item{rsid}{character(1) RSID of variant}
+
+\item{variant_id}{character(1) IGVF variant ID}
+
+\item{chr}{character(1) UCSC-style chromosome name of variant, e.g. "chr1"}
+
+\item{position}{character(1) 0-based position of variant}
+
+\item{range}{the query GRanges}
 }
 \value{
 \code{gene_variants()} returns a tibble describing variants
 associated with the gene; use \code{verbose = TRUE} to retrieve more
+extensive information.
+
+\code{variant_genes()} returns a tibble describing genes
+associated with a variant; use \code{verbose = TRUE} to retrieve more
 extensive information.
 
 \code{gene_elements()} returns a tibble describing elements
@@ -55,11 +102,14 @@ extensive information.
 }
 \description{
 This page documents functions using the IGVF REST
-API, documented at \url{https://api.catalog.igvf.org/#}
+API, documented at \url{https://api.catalog.igvf.org/#}.
 
 \code{gene_variants()} locates variants
 associated with a gene. Only one of
 \code{gene_id}, \code{hgnc}, \code{gene_name}, or \code{alias} should be specified.
+
+\code{variant_genes()} locates genes
+associated with a variant.
 
 \code{gene_elements()} locates elements
 associated with a gene.
@@ -71,9 +121,14 @@ based on a genomic range query.
 based on a genomic range query.
 }
 \examples{
-gene_variants(gene_name = "GCK")
 
-gene_variants(gene_name = "GCK", verbose = TRUE)
+rigvf::gene_variants(gene_name = "GCK")
+
+rigvf::gene_variants(gene_name = "GCK", effect_size="gt:0.5")
+
+rigvf::gene_variants(gene_name = "GCK", verbose = TRUE)
+
+rigvf::variant_genes(spdi = "NC_000001.11:920568:G:A")
 
 res <- rigvf::gene_elements(gene_id = "ENSG00000187961")
 res
@@ -82,6 +137,9 @@ res |>
     tidyr::unnest_wider(regions)
 
 rng <- GenomicRanges::GRanges("chr1", IRanges::IRanges(1157520,1158189))
+
 rigvf::elements(range = rng)
+
+rigvf::element_genes(range = rng)
 
 }

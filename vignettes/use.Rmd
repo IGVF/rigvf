@@ -63,10 +63,21 @@ Ensembl identifiers.
 rigvf::gene_variants(gene_name = "GCK")
 ```
 
+We can also pass thresholds on the negative log10 p-value or the effect size, 
+using the following letter combinations, `gt (>), gte (>=), lt (<), lte (<=)`, 
+followed by a `:` and a value. See examples below:
+
+```{r catalog_variants_threshold}
+rigvf::gene_variants(gene_name = "GCK", log10pvalue="gt:5.0")
+rigvf::gene_variants(gene_name = "GCK", effect_size="gt:0.5")
+```
+
 The help page `?catalog_queries` outlines other available user-facing
-functions. For example, we can also query genomic elements 
-(e.g. candidate *cis* regulatory elements, or cCREs) that are 
-associated with a gene.
+functions. 
+
+Note that nested columns in the response can be widen-ed using *tidyr*.
+For example, when querying genomic elements that are associated with a gene,
+we get back nested output:
 
 ```{r catalog_elements}
 res <- rigvf::gene_elements(gene_id = "ENSG00000187961", verbose = TRUE)
@@ -76,6 +87,11 @@ res |>
     dplyr::select(`regions`) |>
     tidyr::unnest_wider(`regions`)
 ```
+
+## GRanges-based queries
+
+The functions `elements()` and `element_genes()` take *GRanges* input ranges, 
+and `elements()` provides back the response as *GRanges*.
 
 # ArangoDB API
 
@@ -103,6 +119,87 @@ readLines(aql) |> noquote()
 
 The help page `?db_queries` outlines other available user-facing
 functions. See `?arango` for more developer-oriented information.
+
+# Use with Bioconductor
+
+## Compute overlap with *plyranges*
+
+We can query genomic elements using `elements()` and then compute 
+overlaps with the *plyranges* package as below. See the 
+[plyranges](https://github.com/tidyomics/plyranges) package documentation 
+for more examples.
+
+```{r message=FALSE}
+library(plyranges)
+rng <- data.frame(seqnames="chr1", start=10e6+1, end=10.1e6) |>
+  as_granges()
+
+e <- rigvf::elements(rng, limit=200L) |>
+  filter(source != "ENCODE_EpiRaction")
+e
+```
+
+```{r}
+tiles <- tile_ranges(rng, width=10e3) %>%
+  select(-partition) %>%
+  mutate(id = letters[seq_along(.)])
+
+# count overlaps of central basepair of elements in tiles
+e |>
+  anchor_center() |>
+  mutate(width = 1) |>
+  join_overlap_left(tiles) |>
+  tibble::as_tibble() |>
+  dplyr::count(id)
+```
+
+# Plot variants with *plotgardener*
+
+Below we show a simple example of plotting variants and 
+elements in a gene context, using the *plotgardener* package.
+
+```{r}
+v <- rigvf::gene_variants(gene_name = "GCK", verbose=TRUE) |>
+  dplyr::select(-c(gene, chr, source, source_url)) |>
+  tidyr::unnest_wider(`sequence variant`) |>
+  dplyr::rename(seqnames = chr) |>
+  dplyr::mutate(start = pos + 1, end = pos + 1) |>
+  as_granges()
+```
+
+```{r message=FALSE}
+library(plotgardener)
+par <- pgParams(
+  chrom = "chr7",
+  chromstart = 44.1e6,
+  chromend = 44.2e6,
+  assembly = "hg38",
+  just = c("left", "bottom")
+)
+```
+
+To match with the correct gene annotation, we could explicitly define the `TxDb` 
+using `plotgardener::assembly()`, providing a database built by running 
+`GenomicFeatures::makeTxDbFromGFF()` on a GENCODE GTF file.
+
+```{r}
+gene_hilite <- data.frame(
+  gene="GCK",
+  color="magenta"
+)
+```
+
+```{r}
+pageCreate(width = 5, height = 4, showGuides = TRUE)
+plotGenes(
+  params = par, x = 0.5, y = 3.5, width = 4, height = 1,
+  geneHighlights = gene_hilite
+)
+plotGenomeLabel(
+  params = par, x = 0.5, y = 3.5, length = 4,
+  just = c("left", "top")
+)
+```
 
 ```{r}
 sessionInfo()

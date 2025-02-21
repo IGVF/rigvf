@@ -1,4 +1,19 @@
-url: https://mtmorgan.github.io/rigvf/
+url: https://igvf.github.io/rigvf/
 template:
   bootstrap: 5
 
+reference:
+  - title: "Query IGVF via Catalog API"
+    contents:
+      - starts_with("gene")
+      - starts_with("variant")
+      - starts_with("element")
+  - title: "Query IGVF via ArangoDb"
+    contents:
+      - starts_with("db")
+  - title: "Internal interface functions"
+    contents:
+      - starts_with("arango")
+  - title: "Package configuration"
+    contents:
+      - rigvf_config
