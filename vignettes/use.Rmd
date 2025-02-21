@@ -184,16 +184,16 @@ using `plotgardener::assembly()`, providing a database built by running
 
 ```{r}
 gene_hilite <- data.frame(
-  gene="GCK",
-  color="magenta"
+  gene = "GCK",
+  color = "magenta"
 )
 ```
 
 ```{r}
 pageCreate(width = 5, height = 4, showGuides = TRUE)
 plotGenes(
-  params = par, x = 0.5, y = 3.5, width = 4, height = 1,
-  geneHighlights = gene_hilite
+  params = par, x = 0.5, y = 3.5, width = 4, height = 1
+#  geneHighlights = gene_hilite
 )
 plotGenomeLabel(
   params = par, x = 0.5, y = 3.5, length = 4,
