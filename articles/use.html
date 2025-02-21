@@ -128,11 +128,51 @@ identifiers.</p>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> variants/7f4ca6f1cfd70… gene… eQTL         4.10      -<span style="color: #BB0000;">0.165</span> GTEx   https://s…</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 15 more rows</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 2 more variables: biological_context &lt;chr&gt;, chr &lt;chr&gt;</span></span></span></code></pre></div>
-<p>The help page <code><a href="../reference/catalog_queries.html">?catalog_queries</a></code> outlines other available
-user-facing functions. For example, we can also query genomic elements
-(e.g. candidate <em>cis</em> regulatory elements, or cCREs) that are
-associated with a gene.</p>
+<p>We can also pass thresholds on the negative log10 p-value or the
+effect size, using the following letter combinations,
+<code>gt (&gt;), gte (&gt;=), lt (&lt;), lte (&lt;=)</code>, followed by
+a <code>:</code> and a value. See examples below:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">rigvf</span><span class="fu">::</span><span class="fu"><a href="../reference/catalog_queries.html">gene_variants</a></span><span class="op">(</span>gene_name <span class="op">=</span> <span class="st">"GCK"</span>, log10pvalue<span class="op">=</span><span class="st">"gt:5.0"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 25 × 9</span></span></span>
+<span><span class="co">#&gt;    `sequence variant`      gene  label log10pvalue effect_size source source_url</span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> variants/cf796b5a16212… gene… eQTL         5.76       0.221 GTEx   https://s…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> variants/9a36af4633321… gene… eQTL         6.17      -<span style="color: #BB0000;">0.266</span> GTEx   https://s…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> variants/ab6df1152a643… gene… eQTL        16.9       -<span style="color: #BB0000;">0.353</span> GTEx   https://s…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> variants/80f639e0da643… gene… eQTL         6.59      -<span style="color: #BB0000;">0.330</span> GTEx   https://s…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> variants/8fda8a39c0e19… gene… eQTL         5.01      -<span style="color: #BB0000;">0.462</span> GTEx   https://s…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> variants/9f9220f88fd20… gene… eQTL         9.76      -<span style="color: #BB0000;">0.317</span> GTEx   https://s…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> variants/1542d8dc4347e… gene… eQTL         6.88      -<span style="color: #BB0000;">0.197</span> GTEx   https://s…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> variants/6267c5fed3521… gene… eQTL         6.26      -<span style="color: #BB0000;">0.240</span> GTEx   https://s…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> variants/24e837efe47bc… gene… eQTL         6.07       0.213 GTEx   https://s…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> variants/31b41a47c007f… gene… eQTL        15.4       -<span style="color: #BB0000;">0.361</span> GTEx   https://s…</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 15 more rows</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 2 more variables: biological_context &lt;chr&gt;, chr &lt;chr&gt;</span></span></span>
+<span><span class="fu">rigvf</span><span class="fu">::</span><span class="fu"><a href="../reference/catalog_queries.html">gene_variants</a></span><span class="op">(</span>gene_name <span class="op">=</span> <span class="st">"GCK"</span>, effect_size<span class="op">=</span><span class="st">"gt:0.5"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 13 × 9</span></span></span>
+<span><span class="co">#&gt;    `sequence variant`      gene  label log10pvalue effect_size source source_url</span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> variants/2e1a52f2551d6… gene… eQTL         5.08       0.502 GTEx   https://s…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> variants/513df90562f2e… gene… eQTL         3.68       0.628 GTEx   https://s…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> variants/ba959d0d02884… gene… eQTL         3.90       0.515 GTEx   https://s…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> variants/965035c14bc1a… gene… eQTL         3.65       0.548 GTEx   https://s…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> variants/e0d388dd97ea5… gene… eQTL         5.74       0.541 GTEx   https://s…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> variants/a2362bdd461e7… gene… eQTL         4.63       0.770 GTEx   https://s…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> variants/a4919ef974d2c… gene… eQTL         4.17       0.732 GTEx   https://s…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> variants/c117f48f3e28e… gene… eQTL         3.98       0.589 GTEx   https://s…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> variants/f72c43e10b242… gene… eQTL         4.03       0.581 GTEx   https://s…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> variants/ba959d0d02884… gene… eQTL         4.09       0.502 GTEx   https://s…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">11</span> variants/7fc7d0a82445b… gene… eQTL         5.36       0.552 GTEx   https://s…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">12</span> variants/74b4b8f7b37f5… gene… eQTL         4.13       0.604 GTEx   https://s…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">13</span> variants/829ce03f1d460… gene… eQTL         4.50       0.631 GTEx   https://s…</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 2 more variables: biological_context &lt;chr&gt;, chr &lt;chr&gt;</span></span></span></code></pre></div>
+<p>The help page <code><a href="../reference/catalog_queries.html">?catalog_queries</a></code> outlines other available
+user-facing functions.</p>
+<p>Note that nested columns in the response can be widen-ed using
+<em>tidyr</em>. For example, when querying genomic elements that are
+associated with a gene, we get back nested output:</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu">rigvf</span><span class="fu">::</span><span class="fu"><a href="../reference/catalog_queries.html">gene_elements</a></span><span class="op">(</span>gene_id <span class="op">=</span> <span class="st">"ENSG00000187961"</span>, verbose <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="va">res</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 25 × 2</span></span></span>
@@ -168,6 +208,14 @@ associated with a gene.</p>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> genomic_elements… astrocyte 0.017<span style="text-decoration: underline;">2</span> ENCO… https:… accessible d…        1<span style="text-decoration: underline;">000</span>976</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 15 more rows</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 1 more variable: enhancer_end &lt;int&gt;</span></span></span></code></pre></div>
+<div class="section level3">
+<h3 id="granges-based-queries">GRanges-based queries<a class="anchor" aria-label="anchor" href="#granges-based-queries"></a>
+</h3>
+<p>The functions <code><a href="../reference/catalog_queries.html">elements()</a></code> and
+<code><a href="../reference/catalog_queries.html">element_genes()</a></code> take <em>GRanges</em> input ranges, and
+<code><a href="../reference/catalog_queries.html">elements()</a></code> provides back the response as
+<em>GRanges</em>.</p>
+</div>
 </div>
 <div class="section level2">
 <h2 id="arangodb-api">ArangoDB API<a class="anchor" aria-label="anchor" href="#arangodb-api"></a>
@@ -179,7 +227,7 @@ under the ‘Support’ menu item ‘REST API’ tab using username ‘guest’ 
 password ‘guestigvfcatalog’.</p>
 <p>The following directly queries the database for variants of an
 Ensembl gene id.</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">rigvf</span><span class="fu">::</span><span class="fu"><a href="../reference/db_queries.html">db_gene_variants</a></span><span class="op">(</span><span class="st">"ENSG00000106633"</span>, threshold <span class="op">=</span> <span class="fl">0.85</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 1,000 × 14</span></span></span>
 <span><span class="co">#&gt;    `_key`           `_id` `_from` `_to` `_rev` biological_context chr    p_value</span></span>
@@ -198,7 +246,7 @@ Ensembl gene id.</p>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 6 more variables: log10pvalue &lt;dbl&gt;, effect_size &lt;dbl&gt;, pval_beta &lt;dbl&gt;,</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   label &lt;chr&gt;, source &lt;chr&gt;, source_url &lt;chr&gt;</span></span></span></code></pre></div>
 <p>The AQL is</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">aql</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span>package <span class="op">=</span> <span class="st">"rigvf"</span>, <span class="st">"aql"</span>, <span class="st">"gene_variants.aql"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/readLines.html" class="external-link">readLines</a></span><span class="op">(</span><span class="va">aql</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/base/noquote.html" class="external-link">noquote</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] FOR l IN variants_genes                </span></span>
@@ -208,7 +256,130 @@ Ensembl gene id.</p>
 <p>The help page <code><a href="../reference/db_queries.html">?db_queries</a></code> outlines other available
 user-facing functions. See <code><a href="../reference/arango.html">?arango</a></code> for more
 developer-oriented information.</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+</div>
+<div class="section level2">
+<h2 id="use-with-bioconductor">Use with Bioconductor<a class="anchor" aria-label="anchor" href="#use-with-bioconductor"></a>
+</h2>
+<div class="section level3">
+<h3 id="compute-overlap-with-plyranges">Compute overlap with <em>plyranges</em><a class="anchor" aria-label="anchor" href="#compute-overlap-with-plyranges"></a>
+</h3>
+<p>We can query genomic elements using <code><a href="../reference/catalog_queries.html">elements()</a></code> and then
+compute overlaps with the <em>plyranges</em> package as below. See the
+<a href="https://github.com/tidyomics/plyranges" class="external-link">plyranges</a> package
+documentation for more examples.</p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">plyranges</span><span class="op">)</span></span>
+<span><span class="va">rng</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>seqnames<span class="op">=</span><span class="st">"chr1"</span>, start<span class="op">=</span><span class="fl">10e6</span><span class="op">+</span><span class="fl">1</span>, end<span class="op">=</span><span class="fl">10.1e6</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/plyranges/man/ranges-construct.html" class="external-link">as_granges</a></span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">e</span> <span class="op">&lt;-</span> <span class="fu">rigvf</span><span class="fu">::</span><span class="fu"><a href="../reference/catalog_queries.html">elements</a></span><span class="op">(</span><span class="va">rng</span>, limit<span class="op">=</span><span class="fl">200L</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">source</span> <span class="op">!=</span> <span class="st">"ENCODE_EpiRaction"</span><span class="op">)</span></span>
+<span><span class="va">e</span></span>
+<span><span class="co">#&gt; GRanges object with 106 ranges and 5 metadata columns:</span></span>
+<span><span class="co">#&gt;         seqnames            ranges strand |         name      source_annotation</span></span>
+<span><span class="co">#&gt;            &lt;Rle&gt;         &lt;IRanges&gt;  &lt;Rle&gt; |  &lt;character&gt;            &lt;character&gt;</span></span>
+<span><span class="co">#&gt;     [1]     chr1 10001018-10001351      * | EH38E1317660 dELS: distal Enhance..</span></span>
+<span><span class="co">#&gt;     [2]     chr1 10013307-10013640      * | EH38E1317663 dELS: distal Enhance..</span></span>
+<span><span class="co">#&gt;     [3]     chr1 10014094-10014261      * | EH38E1317664 dELS: distal Enhance..</span></span>
+<span><span class="co">#&gt;     [4]     chr1 10018931-10019279      * | EH38E1317668 dELS: distal Enhance..</span></span>
+<span><span class="co">#&gt;     [5]     chr1 10019632-10019888      * | EH38E1317669 CA-CTCF: chromatin a..</span></span>
+<span><span class="co">#&gt;     ...      ...               ...    ... .          ...                    ...</span></span>
+<span><span class="co">#&gt;   [102]     chr1 10045614-10045768      * | EH38E3954155 dELS: distal Enhance..</span></span>
+<span><span class="co">#&gt;   [103]     chr1 10064932-10065090      * | EH38E3954156 dELS: distal Enhance..</span></span>
+<span><span class="co">#&gt;   [104]     chr1 10080547-10080876      * | EH38E3954157         TF: TF binding</span></span>
+<span><span class="co">#&gt;   [105]     chr1 10088561-10088910      * | EH38E3954158         TF: TF binding</span></span>
+<span><span class="co">#&gt;   [106]     chr1 10099598-10099944      * | EH38E3954159 CA: chromatin access..</span></span>
+<span><span class="co">#&gt;                           type                source             source_url</span></span>
+<span><span class="co">#&gt;                    &lt;character&gt;           &lt;character&gt;            &lt;character&gt;</span></span>
+<span><span class="co">#&gt;     [1] candidate cis regula.. ENCODE_SCREEN (ccREs) https://data.igvf.or..</span></span>
+<span><span class="co">#&gt;     [2] candidate cis regula.. ENCODE_SCREEN (ccREs) https://data.igvf.or..</span></span>
+<span><span class="co">#&gt;     [3] candidate cis regula.. ENCODE_SCREEN (ccREs) https://data.igvf.or..</span></span>
+<span><span class="co">#&gt;     [4] candidate cis regula.. ENCODE_SCREEN (ccREs) https://data.igvf.or..</span></span>
+<span><span class="co">#&gt;     [5] candidate cis regula.. ENCODE_SCREEN (ccREs) https://data.igvf.or..</span></span>
+<span><span class="co">#&gt;     ...                    ...                   ...                    ...</span></span>
+<span><span class="co">#&gt;   [102] candidate cis regula.. ENCODE_SCREEN (ccREs) https://data.igvf.or..</span></span>
+<span><span class="co">#&gt;   [103] candidate cis regula.. ENCODE_SCREEN (ccREs) https://data.igvf.or..</span></span>
+<span><span class="co">#&gt;   [104] candidate cis regula.. ENCODE_SCREEN (ccREs) https://data.igvf.or..</span></span>
+<span><span class="co">#&gt;   [105] candidate cis regula.. ENCODE_SCREEN (ccREs) https://data.igvf.or..</span></span>
+<span><span class="co">#&gt;   [106] candidate cis regula.. ENCODE_SCREEN (ccREs) https://data.igvf.or..</span></span>
+<span><span class="co">#&gt;   -------</span></span>
+<span><span class="co">#&gt;   seqinfo: 1 sequence from hg38 genome; no seqlengths</span></span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">tiles</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/plyranges/man/ranges-tile.html" class="external-link">tile_ranges</a></span><span class="op">(</span><span class="va">rng</span>, width<span class="op">=</span><span class="fl">10e3</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="op">-</span><span class="va">partition</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>id <span class="op">=</span> <span class="va">letters</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq_along</a></span><span class="op">(</span><span class="va">.</span><span class="op">)</span><span class="op">]</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># count overlaps of central basepair of elements in tiles</span></span>
+<span><span class="va">e</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/plyranges/man/ranges-anchor.html" class="external-link">anchor_center</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>width <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/plyranges/man/overlap-joins.html" class="external-link">join_overlap_left</a></span><span class="op">(</span><span class="va">tiles</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html" class="external-link">as_tibble</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html" class="external-link">count</a></span><span class="op">(</span><span class="va">id</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 10 × 2</span></span></span>
+<span><span class="co">#&gt;    id        n</span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> a         6</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> b        13</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> c        10</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> d        15</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> e        11</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> f        15</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> g        12</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> h        12</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> i         7</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> j         5</span></span></code></pre></div>
+</div>
+</div>
+<div class="section level2">
+<h2 id="plot-variants-with-plotgardener">Plot variants with <em>plotgardener</em><a class="anchor" aria-label="anchor" href="#plot-variants-with-plotgardener"></a>
+</h2>
+<p>Below we show a simple example of plotting variants and elements in a
+gene context, using the <em>plotgardener</em> package.</p>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">v</span> <span class="op">&lt;-</span> <span class="fu">rigvf</span><span class="fu">::</span><span class="fu"><a href="../reference/catalog_queries.html">gene_variants</a></span><span class="op">(</span>gene_name <span class="op">=</span> <span class="st">"GCK"</span>, verbose<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="op">-</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">gene</span>, <span class="va">chr</span>, <span class="va">source</span>, <span class="va">source_url</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">tidyr</span><span class="fu">::</span><span class="fu"><a href="https://tidyr.tidyverse.org/reference/unnest_wider.html" class="external-link">unnest_wider</a></span><span class="op">(</span><span class="va">`sequence variant`</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html" class="external-link">rename</a></span><span class="op">(</span>seqnames <span class="op">=</span> <span class="va">chr</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>start <span class="op">=</span> <span class="va">pos</span> <span class="op">+</span> <span class="fl">1</span>, end <span class="op">=</span> <span class="va">pos</span> <span class="op">+</span> <span class="fl">1</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/plyranges/man/ranges-construct.html" class="external-link">as_granges</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://phanstiellab.github.io/plotgardener" class="external-link">plotgardener</a></span><span class="op">)</span></span>
+<span><span class="va">par</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://phanstiellab.github.io/plotgardener/reference/pgParams.html" class="external-link">pgParams</a></span><span class="op">(</span></span>
+<span>  chrom <span class="op">=</span> <span class="st">"chr7"</span>,</span>
+<span>  chromstart <span class="op">=</span> <span class="fl">44.1e6</span>,</span>
+<span>  chromend <span class="op">=</span> <span class="fl">44.2e6</span>,</span>
+<span>  assembly <span class="op">=</span> <span class="st">"hg38"</span>,</span>
+<span>  just <span class="op">=</span> <span class="fu"><a href="https://phanstiellab.github.io/plotgardener/reference/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"left"</span>, <span class="st">"bottom"</span><span class="op">)</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+<p>To match with the correct gene annotation, we could explicitly define
+the <code>TxDb</code> using <code><a href="https://phanstiellab.github.io/plotgardener/reference/assembly.html" class="external-link">plotgardener::assembly()</a></code>,
+providing a database built by running
+<code>GenomicFeatures::makeTxDbFromGFF()</code> on a GENCODE GTF
+file.</p>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">gene_hilite</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span>
+<span>  gene <span class="op">=</span> <span class="st">"GCK"</span>,</span>
+<span>  color <span class="op">=</span> <span class="st">"magenta"</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://phanstiellab.github.io/plotgardener/reference/pageCreate.html" class="external-link">pageCreate</a></span><span class="op">(</span>width <span class="op">=</span> <span class="fl">5</span>, height <span class="op">=</span> <span class="fl">4</span>, showGuides <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://phanstiellab.github.io/plotgardener/reference/plotGenes.html" class="external-link">plotGenes</a></span><span class="op">(</span></span>
+<span>  params <span class="op">=</span> <span class="va">par</span>, x <span class="op">=</span> <span class="fl">0.5</span>, y <span class="op">=</span> <span class="fl">3.5</span>, width <span class="op">=</span> <span class="fl">4</span>, height <span class="op">=</span> <span class="fl">1</span></span>
+<span><span class="co">#  geneHighlights = gene_hilite</span></span>
+<span><span class="op">)</span></span>
+<span><span class="co">#&gt; Warning: `TxDb.Hsapiens.UCSC.hg38.knownGene` not available. Please load to plot</span></span>
+<span><span class="co">#&gt; genes or transcripts.</span></span>
+<span><span class="co">#&gt; Warning: `org.Hs.eg.db` not available. Please load to plot genes or</span></span>
+<span><span class="co">#&gt; transcripts.</span></span>
+<span><span class="co">#&gt; genes[genes1]</span></span>
+<span><span class="fu"><a href="https://phanstiellab.github.io/plotgardener/reference/plotGenomeLabel.html" class="external-link">plotGenomeLabel</a></span><span class="op">(</span></span>
+<span>  params <span class="op">=</span> <span class="va">par</span>, x <span class="op">=</span> <span class="fl">0.5</span>, y <span class="op">=</span> <span class="fl">3.5</span>, length <span class="op">=</span> <span class="fl">4</span>,</span>
+<span>  just <span class="op">=</span> <span class="fu"><a href="https://phanstiellab.github.io/plotgardener/reference/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"left"</span>, <span class="st">"top"</span><span class="op">)</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+<p><img src="use_files/figure-html/unnamed-chunk-8-1.png" width="700"></p>
+<pre><code><span><span class="co">#&gt; genomeLabel[genomeLabel1]</span></span></code></pre>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/sessionInfo.html" class="external-link">sessionInfo</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; R version 4.4.2 (2024-10-31)</span></span>
 <span><span class="co">#&gt; Platform: x86_64-pc-linux-gnu</span></span>
@@ -228,28 +399,60 @@ developer-oriented information.</p>
 <span><span class="co">#&gt; tzcode source: system (glibc)</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; attached base packages:</span></span>
-<span><span class="co">#&gt; [1] stats     graphics  grDevices utils     datasets  methods   base     </span></span>
+<span><span class="co">#&gt; [1] stats4    stats     graphics  grDevices utils     datasets  methods  </span></span>
+<span><span class="co">#&gt; [8] base     </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; other attached packages:</span></span>
+<span><span class="co">#&gt; [1] plotgardener_1.12.0  plyranges_1.26.0     GenomicRanges_1.58.0</span></span>
+<span><span class="co">#&gt; [4] GenomeInfoDb_1.42.3  IRanges_2.40.1       S4Vectors_0.44.0    </span></span>
+<span><span class="co">#&gt; [7] BiocGenerics_0.52.0 </span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; loaded via a namespace (and not attached):</span></span>
-<span><span class="co">#&gt;  [1] jsonlite_1.9.0          dplyr_1.1.4             compiler_4.4.2         </span></span>
-<span><span class="co">#&gt;  [4] tidyselect_1.2.1        GenomicRanges_1.58.0    tidyr_1.3.1            </span></span>
-<span><span class="co">#&gt;  [7] rigvf_0.0.5             jquerylib_0.1.4         systemfonts_1.2.1      </span></span>
-<span><span class="co">#&gt; [10] IRanges_2.40.1          textshaping_1.0.0       yaml_2.3.10            </span></span>
-<span><span class="co">#&gt; [13] fastmap_1.2.0           R6_2.6.1                XVector_0.46.0         </span></span>
-<span><span class="co">#&gt; [16] rjsoncons_1.3.1         generics_0.1.3          curl_6.2.1             </span></span>
-<span><span class="co">#&gt; [19] httr2_1.1.0             GenomeInfoDb_1.42.3     knitr_1.49             </span></span>
-<span><span class="co">#&gt; [22] BiocGenerics_0.52.0     tibble_3.2.1            desc_1.4.3             </span></span>
-<span><span class="co">#&gt; [25] GenomeInfoDbData_1.2.13 bslib_0.9.0             pillar_1.10.1          </span></span>
-<span><span class="co">#&gt; [28] rlang_1.1.5             utf8_1.2.4              cachem_1.1.0           </span></span>
-<span><span class="co">#&gt; [31] xfun_0.51               fs_1.6.5                sass_0.4.9             </span></span>
-<span><span class="co">#&gt; [34] memoise_2.0.1           cli_3.6.4               withr_3.0.2            </span></span>
-<span><span class="co">#&gt; [37] pkgdown_2.1.1           magrittr_2.0.3          zlibbioc_1.52.0        </span></span>
-<span><span class="co">#&gt; [40] digest_0.6.37           rappdirs_0.3.3          lifecycle_1.0.4        </span></span>
-<span><span class="co">#&gt; [43] S4Vectors_0.44.0        vctrs_0.6.5             evaluate_1.0.3         </span></span>
-<span><span class="co">#&gt; [46] glue_1.8.0              whisker_0.4.1           ragg_1.3.3             </span></span>
-<span><span class="co">#&gt; [49] stats4_4.4.2            purrr_1.0.4             rmarkdown_2.29         </span></span>
-<span><span class="co">#&gt; [52] httr_1.4.7              tools_4.4.2             pkgconfig_2.0.3        </span></span>
-<span><span class="co">#&gt; [55] htmltools_0.5.8.1       UCSC.utils_1.2.0</span></span></code></pre></div>
+<span><span class="co">#&gt;  [1] tidyselect_1.2.1            dplyr_1.1.4                </span></span>
+<span><span class="co">#&gt;  [3] Biostrings_2.74.1           bitops_1.0-9               </span></span>
+<span><span class="co">#&gt;  [5] fastmap_1.2.0               RCurl_1.98-1.16            </span></span>
+<span><span class="co">#&gt;  [7] GenomicAlignments_1.42.0    XML_3.99-0.18              </span></span>
+<span><span class="co">#&gt;  [9] digest_0.6.37               lifecycle_1.0.4            </span></span>
+<span><span class="co">#&gt; [11] magrittr_2.0.3              compiler_4.4.2             </span></span>
+<span><span class="co">#&gt; [13] rlang_1.1.5                 sass_0.4.9                 </span></span>
+<span><span class="co">#&gt; [15] tools_4.4.2                 utf8_1.2.4                 </span></span>
+<span><span class="co">#&gt; [17] yaml_2.3.10                 data.table_1.16.4          </span></span>
+<span><span class="co">#&gt; [19] rtracklayer_1.66.0          knitr_1.49                 </span></span>
+<span><span class="co">#&gt; [21] S4Arrays_1.6.0              curl_6.2.1                 </span></span>
+<span><span class="co">#&gt; [23] DelayedArray_0.32.0         RColorBrewer_1.1-3         </span></span>
+<span><span class="co">#&gt; [25] abind_1.4-8                 BiocParallel_1.40.0        </span></span>
+<span><span class="co">#&gt; [27] withr_3.0.2                 purrr_1.0.4                </span></span>
+<span><span class="co">#&gt; [29] desc_1.4.3                  grid_4.4.2                 </span></span>
+<span><span class="co">#&gt; [31] colorspace_2.1-1            Rhdf5lib_1.28.0            </span></span>
+<span><span class="co">#&gt; [33] ggplot2_3.5.1               scales_1.3.0               </span></span>
+<span><span class="co">#&gt; [35] SummarizedExperiment_1.36.0 cli_3.6.4                  </span></span>
+<span><span class="co">#&gt; [37] rmarkdown_2.29              crayon_1.5.3               </span></span>
+<span><span class="co">#&gt; [39] ragg_1.3.3                  generics_0.1.3             </span></span>
+<span><span class="co">#&gt; [41] httr_1.4.7                  rjson_0.2.23               </span></span>
+<span><span class="co">#&gt; [43] cachem_1.1.0                rhdf5_2.50.2               </span></span>
+<span><span class="co">#&gt; [45] zlibbioc_1.52.0             parallel_4.4.2             </span></span>
+<span><span class="co">#&gt; [47] ggplotify_0.1.2             XVector_0.46.0             </span></span>
+<span><span class="co">#&gt; [49] restfulr_0.0.15             matrixStats_1.5.0          </span></span>
+<span><span class="co">#&gt; [51] vctrs_0.6.5                 yulab.utils_0.2.0          </span></span>
+<span><span class="co">#&gt; [53] Matrix_1.7-1                jsonlite_1.9.0             </span></span>
+<span><span class="co">#&gt; [55] gridGraphics_0.5-1          systemfonts_1.2.1          </span></span>
+<span><span class="co">#&gt; [57] strawr_0.0.92               tidyr_1.3.1                </span></span>
+<span><span class="co">#&gt; [59] jquerylib_0.1.4             rigvf_0.0.5                </span></span>
+<span><span class="co">#&gt; [61] glue_1.8.0                  pkgdown_2.1.1              </span></span>
+<span><span class="co">#&gt; [63] codetools_0.2-20            gtable_0.3.6               </span></span>
+<span><span class="co">#&gt; [65] BiocIO_1.16.0               UCSC.utils_1.2.0           </span></span>
+<span><span class="co">#&gt; [67] munsell_0.5.1               tibble_3.2.1               </span></span>
+<span><span class="co">#&gt; [69] pillar_1.10.1               rhdf5filters_1.18.0        </span></span>
+<span><span class="co">#&gt; [71] rappdirs_0.3.3              htmltools_0.5.8.1          </span></span>
+<span><span class="co">#&gt; [73] GenomeInfoDbData_1.2.13     R6_2.6.1                   </span></span>
+<span><span class="co">#&gt; [75] httr2_1.1.0                 textshaping_1.0.0          </span></span>
+<span><span class="co">#&gt; [77] evaluate_1.0.3              lattice_0.22-6             </span></span>
+<span><span class="co">#&gt; [79] Biobase_2.66.0              Rsamtools_2.22.0           </span></span>
+<span><span class="co">#&gt; [81] memoise_2.0.1               bslib_0.9.0                </span></span>
+<span><span class="co">#&gt; [83] rjsoncons_1.3.1             Rcpp_1.0.14                </span></span>
+<span><span class="co">#&gt; [85] SparseArray_1.6.1           whisker_0.4.1              </span></span>
+<span><span class="co">#&gt; [87] xfun_0.51                   fs_1.6.5                   </span></span>
+<span><span class="co">#&gt; [89] MatrixGenerics_1.18.1       pkgconfig_2.0.3</span></span></code></pre></div>
 </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside>
