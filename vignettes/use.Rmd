@@ -216,11 +216,6 @@ UCSC-style chromosome names.
 
 ```{r}
 library(TxDb.Hsapiens.UCSC.hg38.knownGene)
-# a highlighted gene:
-gene_hilite <- data.frame(
-  gene = "GCK",
-  color = "magenta"
-)
 ```
 
 Below we build the page and populate it with annotation from the *TxDb*
@@ -229,8 +224,7 @@ used by *plotgardener* and from IGVF Catalog.
 ```{r fig.dim = c(5, 4)}
 pageCreate(width = 5, height = 4, showGuides = FALSE)
 plotGenes(
-  params = par, x = 0.5, y = 3.5, width = 4, height = 1,
-  geneHighlights = gene_hilite
+  params = par, x = 0.5, y = 3.5, width = 4, height = 1
 )
 plotGenomeLabel(
   params = par,
