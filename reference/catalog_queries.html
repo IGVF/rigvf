@@ -31,7 +31,7 @@ based on a genomic range query."></head><body>
 
     <a class="navbar-brand me-2" href="../index.html">rigvf</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.5</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.6</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -151,11 +151,12 @@ the effect size of the variant on the gene. See 'log10pvalue'. E.g., "gt:0.5"</p
 
 
 <dt id="arg-page">page<a class="anchor" aria-label="anchor" href="#arg-page"></a></dt>
-<dd><p>when there are more response items than <code>limit</code>, offers pagination</p></dd>
+<dd><p>integer(1) when there are more response items than <code>limit</code>, offers pagination.
+starts on page 0L, next is 1L, ...</p></dd>
 
 
 <dt id="arg-limit">limit<a class="anchor" aria-label="anchor" href="#arg-limit"></a></dt>
-<dd><p>the limit parameter controls the page size and can not exceed 1000</p></dd>
+<dd><p>integer(1) the limit parameter controls the page size and can not exceed 1000</p></dd>
 
 
 <dt id="arg-verbose">verbose<a class="anchor" aria-label="anchor" href="#arg-verbose"></a></dt>
