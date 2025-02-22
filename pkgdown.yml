@@ -3,7 +3,7 @@ pkgdown: 2.1.1
 pkgdown_sha: ~
 articles:
   use: use.html
-last_built: 2025-02-21T19:32Z
+last_built: 2025-02-22T16:49Z
 urls:
-  reference: https://igvf.github.io/rigvf/reference
-  article: https://igvf.github.io/rigvf/articles
+  reference: https://IGVF.github.io/rigvf/reference
+  article: https://IGVF.github.io/rigvf/articles
