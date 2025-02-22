@@ -1,6 +1,6 @@
 Package: rigvf
 Title: R interface to the IGVF Catalog
-Version: 0.0.7
+Version: 0.0.8
 Authors@R:
     c(person(
         "Martin", "Morgan", role = "aut",
@@ -10,15 +10,19 @@ Authors@R:
         "Michael", "Love", role = c("aut", "cre"),
         email = "michaelisaiahlove@gamil.com",
         comment = c(ORCID = "0000-0001-8401-0545")
+    ),
+    person(
+        "NIH NHGRI UM1HG012003",
+        role = "fnd"
     ))
-Description: The 'IGVF' data portal provides
-    information on the impact of genomic variants on 
-    function. The 'rigvf' package provides an interface to this
-    resource, allowing easy integration with 'Bioconductor' resources.
+Description: The IGVF Catalog provides data on the impact of 
+    genomic variants on function. The `rigvf` package provides 
+    an interface to the IGVF Catalog, allowing easy integration 
+    with Bioconductor resources.
 License: MIT
 Imports: httr2, rjsoncons, dplyr, tidyr, rlang, memoise, cachem,
     whisker, jsonlite, GenomicRanges, IRanges, GenomeInfoDb
-URL: https://igvf.github.io/rigvf/
+URL: https://IGVF.github.io/rigvf
 BugReports: https://github.com/IGVF/rigvf/issues
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)

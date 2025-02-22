@@ -105,9 +105,14 @@ extensive information.
 This page documents functions using the IGVF REST
 API, documented at \url{https://api.catalog.igvf.org/#}.
 
-\code{gene_variants()} locates variants
-associated with a gene. Only one of
-\code{gene_id}, \code{hgnc}, \code{gene_name}, or \code{alias} should be specified.
+Note that functions will only return a limited number
+of responses, see \code{limit} and \code{page} arguments below for control
+over number of responses.
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{`gene_variants()` locates variants associated with a gene. 
+ Only one of `gene_id`, `hgnc`, `gene_name`, or `alias` 
+ should be specified.
+}\if{html}{\out{</div>}}
 
 \code{variant_genes()} locates genes
 associated with a variant.

@@ -23,10 +23,14 @@ range_to_string <-
 #' @description This page documents functions using the IGVF REST
 #'     API, documented at <https://api.catalog.igvf.org/#>.
 #'
-#' @description `gene_variants()` locates variants
-#'     associated with a gene. Only one of
-#'     `gene_id`, `hgnc`, `gene_name`, or `alias` should be specified.
-#'
+#' @description Note that functions will only return a limited number
+#'     of responses, see `limit` and `page` arguments below for control
+#'     over number of responses.
+#'     
+#'     `gene_variants()` locates variants associated with a gene. 
+#'      Only one of `gene_id`, `hgnc`, `gene_name`, or `alias` 
+#'      should be specified.
+#' 
 #' @param gene_id character(1) Ensembl gene identifier, e.g., "ENSG00000106633"
 #'
 #' @param hgnc character(1) HGNC identifier
@@ -159,8 +163,8 @@ variant_genes <-
 {
     organism <- match.arg(organism)
     
-    chrpos <- if (!is.null(chr) & !is.null(pos)) {
-        paste0(chr, ":", pos)
+    chrpos <- if (!is.null(chr) & !is.null(position)) {
+        paste0(chr, ":", position)
     } else {
         NULL
     }

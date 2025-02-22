@@ -14,8 +14,8 @@ Install the development version from
 [GitHub](https://github.com/IGVF/rigvf) with:
 
 ``` r
-## install.packages("pak")
-pak::pak("IGVF/rigvf")
+## install.packages("BiocManager") # if not installed
+BiocManager::install("IGVF/rigvf")
 ```
 
 ## Use
@@ -25,4 +25,4 @@ See the [Accessing data from the IGVF Catalog][] vignette for basic use.
 See `?catalog_queries` and `?db_queries` for example functions for accessing 
 IGVF data through the Catalog API and ArangoDB API, respectively.
 
-[Accessing data from the IGVF Catalog]: https://igvf.github.io/rigvf/articles/use.html
+[Accessing data from the IGVF Catalog]: https://IGVF.github.io/rigvf/articles/use.html
