@@ -4,10 +4,9 @@ API, documented at https://api.catalog.igvf.org/#.
 Note that functions will only return a limited number
 of responses, see limit and page arguments below for control
 over number of responses.
-`gene_variants()` locates variants associated with a gene.
- Only one of `gene_id`, `hgnc`, `gene_name`, or `alias`
- should be specified.
-
+gene_variants() locates variants associated with a gene.
+Only one of gene_id, hgnc, gene_name, or alias
+should be specified.
 variant_genes() locates genes
 associated with a variant.
 gene_elements() locates elements
@@ -20,10 +19,9 @@ API, documented at https://api.catalog.igvf.org/#.
 Note that functions will only return a limited number
 of responses, see limit and page arguments below for control
 over number of responses.
-`gene_variants()` locates variants associated with a gene.
- Only one of `gene_id`, `hgnc`, `gene_name`, or `alias`
- should be specified.
-
+gene_variants() locates variants associated with a gene.
+Only one of gene_id, hgnc, gene_name, or alias
+should be specified.
 variant_genes() locates genes
 associated with a variant.
 gene_elements() locates elements
@@ -75,9 +73,9 @@ API, documented at <a href="https://api.catalog.igvf.org/#" class="external-link
 <p>Note that functions will only return a limited number
 of responses, see <code>limit</code> and <code>page</code> arguments below for control
 over number of responses.</p>
-<p></p><div class="sourceCode"><pre><code><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="st">`</span><span class="at">gene_variants()</span><span class="st">`</span> locates variants associated with a gene.</span>
-<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a> Only one of <span class="st">`</span><span class="at">gene_id</span><span class="st">`</span>, <span class="st">`</span><span class="at">hgnc</span><span class="st">`</span>, <span class="st">`</span><span class="at">gene_name</span><span class="st">`</span>, or <span class="st">`</span><span class="at">alias</span><span class="st">`</span></span>
-<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a> should be specified.</span></code></pre><p></p></div>
+<p><code>gene_variants()</code> locates variants associated with a gene.
+Only one of <code>gene_id</code>, <code>hgnc</code>, <code>gene_name</code>, or <code>alias</code>
+should be specified.</p>
 <p><code>variant_genes()</code> locates genes
 associated with a variant.</p>
 <p><code>gene_elements()</code> locates elements
@@ -200,7 +198,7 @@ variants and genes</p></dd>
 
 
 <dt id="arg-range">range<a class="anchor" aria-label="anchor" href="#arg-range"></a></dt>
-<dd><p>the query GRanges</p></dd>
+<dd><p>the query GRanges (expects 1-based start position)</p></dd>
 
 </dl></div>
     <div class="section level2">
