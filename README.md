@@ -1,4 +1,4 @@
-# rigvf
+# rigvf <img id="rigvf_logo" alt="rigvf logo" src="man/figures/rigvf.png" align="right" width="125"/>
 
 <!-- badges: start -->
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)

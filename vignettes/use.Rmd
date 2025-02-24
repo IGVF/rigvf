@@ -222,7 +222,7 @@ library(org.Hs.eg.db)
 Below we build the page and populate it with annotation from the *TxDb*
 used by *plotgardener* and from IGVF Catalog.
 
-```{r fig.dim = c(5, 4)}
+```{r plotgardener, fig.alt="Manhattan of IGVF annotated variants", fig.dim = c(5, 4)}
 pageCreate(width = 5, height = 4, showGuides = FALSE)
 plotGenes(
   params = par, x = 0.5, y = 3.5, width = 4, height = 1
