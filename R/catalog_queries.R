@@ -35,7 +35,7 @@ range_to_string <-
 #'     of responses, see `limit` and `page` arguments below for control
 #'     over number of responses.
 #'     
-#'     `gene_variants()` locates variants associated with a gene. 
+#' `gene_variants()` locates variants associated with a gene. 
 #'      Only one of `gene_id`, `hgnc`, `gene_name`, or `alias` 
 #'      should be specified.
 #' 

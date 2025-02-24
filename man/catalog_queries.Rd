@@ -82,7 +82,7 @@ variants and genes}
 
 \item{position}{character(1) 0-based position of variant}
 
-\item{range}{the query GRanges}
+\item{range}{the query GRanges (expects 1-based start position)}
 }
 \value{
 \code{gene_variants()} returns a tibble describing variants
@@ -109,10 +109,9 @@ Note that functions will only return a limited number
 of responses, see \code{limit} and \code{page} arguments below for control
 over number of responses.
 
-\if{html}{\out{<div class="sourceCode">}}\preformatted{`gene_variants()` locates variants associated with a gene. 
- Only one of `gene_id`, `hgnc`, `gene_name`, or `alias` 
- should be specified.
-}\if{html}{\out{</div>}}
+\code{gene_variants()} locates variants associated with a gene.
+Only one of \code{gene_id}, \code{hgnc}, \code{gene_name}, or \code{alias}
+should be specified.
 
 \code{variant_genes()} locates genes
 associated with a variant.
