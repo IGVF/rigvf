@@ -8,10 +8,13 @@ catalog_request <-
 }
 
 # for range queries, make e.g. chr1:101-200
+# since the string is sent to IGVF, we convert from
+# 1-based incoming position to 0-based outgoing
 range_to_string <- 
     function(range)
-{
-    paste0(seqnames(range),":",start(range),"-",end(range))
+  {
+    # output 0-based range
+    paste0(seqnames(range),":",start(range)-1,"-",end(range))
 }
 
 #' @rdname catalog_queries
@@ -122,6 +125,7 @@ gene_variants <-
         verbose = tolower(as.character(verbose))
     )
     j_pivot(response, as = "tibble")
+
 }
 
 #' @rdname catalog_queries
@@ -196,7 +200,8 @@ variant_genes <-
         verbose = tolower(as.character(verbose))
     )
     j_pivot(response, as = "tibble")
-    }
+
+}
 
 #' @rdname catalog_queries
 #' 
@@ -229,6 +234,7 @@ gene_elements <-
         verbose = tolower(as.character(verbose))
     )
     j_pivot(response, as = "tibble")
+
 }
 
 #' @rdname catalog_queries
@@ -236,7 +242,7 @@ gene_elements <-
 #' @description `elements()` locates genomic elements
 #'     based on a genomic range query.
 #' 
-#' @param range the query GRanges
+#' @param range the query GRanges (expects 1-based start position)
 #'
 #' @return `elements()` returns a GRanges object describing elements.
 #'
@@ -264,7 +270,7 @@ elements <-
     
     response <- catalog_request(
         "genomic-elements",
-        region = range_to_string(range),
+        region = range_to_string(range), # converts to 0-based start
         page = page,
         limit = limit
     )
@@ -280,7 +286,7 @@ elements <-
     genome(element_ranges) <- igvf_genome # IGVF reference genome
     element_ranges
     
-    }
+}
 
 #' @rdname catalog_queries
 #' 
@@ -312,7 +318,7 @@ element_genes <-
     
     response <- catalog_request(
         "genomic-elements/genes",
-        region = range_to_string(range),
+        region = range_to_string(range), # converts to 0-based start
         page = page,
         limit = limit,
         verbose = tolower(as.character(verbose))
@@ -320,5 +326,4 @@ element_genes <-
         
     j_pivot(response, as = "tibble")
     
-    }
-        
+}
