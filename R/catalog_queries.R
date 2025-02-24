@@ -12,9 +12,14 @@ catalog_request <-
 # 1-based incoming position to 0-based outgoing
 range_to_string <- 
     function(range)
-  {
+{
     # output 0-based range
-    paste0(seqnames(range),":",start(range)-1,"-",end(range))
+    paste0(
+        seqnames(range),":",
+        format(start(range) - 1, scientific=FALSE),
+        "-",
+        format(end(range), scientific=FALSE)
+    )
 }
 
 #' @rdname catalog_queries
@@ -267,7 +272,7 @@ elements <-
         is_scalar_integer(page),
         is_scalar_integer(limit)
     )
-    
+
     response <- catalog_request(
         "genomic-elements",
         region = range_to_string(range), # converts to 0-based start
