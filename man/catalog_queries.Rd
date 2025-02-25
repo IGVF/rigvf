@@ -115,6 +115,8 @@ should be specified.
 
 \code{variant_genes()} locates genes
 associated with a variant.
+Only one of \code{spdi}, \code{hgvs}, \code{rsid}, \code{variant_id},
+or \code{chr + position} should be specified.
 
 \code{gene_elements()} locates elements
 associated with a gene.

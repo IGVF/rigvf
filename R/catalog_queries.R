@@ -149,7 +149,8 @@ gene_variants <-
 #' 
 #' @description `variant_genes()` locates genes
 #'     associated with a variant.
-#'
+#'     Only one of `spdi`, `hgvs`, `rsid`, `variant_id`,
+#'     or `chr + position` should be specified.
 #' @return `variant_genes()` returns a tibble describing genes
 #'     associated with a variant; use `verbose = TRUE` to retrieve more
 #'     extensive information.
