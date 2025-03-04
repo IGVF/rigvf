@@ -287,7 +287,7 @@ elements <-
         seqnames = tib$chr,
         ranges = IRanges(tib$start + 1, tib$end), # API gives 0-based start 
         strand = "*", 
-        tib[,-(1:3)]
+        tib[,-seq_len(3)] # remove chr start end
     )
     genome(element_ranges) <- igvf_genome # IGVF reference genome
     element_ranges

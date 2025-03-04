@@ -25,6 +25,9 @@ Imports: httr2, rjsoncons, dplyr, tidyr, rlang, memoise, cachem,
 URL: https://IGVF.github.io/rigvf
 BugReports: https://github.com/IGVF/rigvf/issues
 Encoding: UTF-8
+biocViews: ThirdPartyClient, Annotation, VariantAnnotation,
+   FunctionalGenomics, GeneRegulation, GenomicVariation,
+   GeneTarget
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.2
 Suggests: 
