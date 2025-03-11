@@ -21,7 +21,7 @@ Install the development version from
 BiocManager::install("IGVF/rigvf")
 ```
 
-## Use
+## Using `rigvf`
 
 See the [Accessing data from the IGVF Catalog][] vignette for basic use.
 
@@ -29,3 +29,7 @@ See `?catalog_queries` and `?db_queries` for example functions for accessing
 IGVF data through the Catalog API and ArangoDB API, respectively.
 
 [Accessing data from the IGVF Catalog]: https://IGVF.github.io/rigvf/articles/rigvf.html
+
+## Data license
+
+For IGVF Catalog data license, see the [IGVF policy page](https://data.igvf.org/policies/).

@@ -54,6 +54,10 @@ functionality. However, the [source code](https://github.com/IGVF/rigvf)
 and internal functions can also be used to build one-off querying 
 functions.
 
+## Data license
+
+For IGVF Catalog data license, see the [IGVF policy page](https://data.igvf.org/policies/).
+
 # Catalog API
 
 The IGVF Catalog offers two programmatic interfaces, the Catalog API and 

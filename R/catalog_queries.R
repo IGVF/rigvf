@@ -301,6 +301,8 @@ elements <-
 #'
 #' @return `element_genes()` returns a tibble describing genomic element and gene pairs.
 #'
+#' @importFrom methods is
+#' 
 #' @export
 element_genes <-
     function(
