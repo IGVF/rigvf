@@ -1,6 +1,6 @@
 Package: rigvf
 Title: R interface to the IGVF Catalog
-Version: 0.99.3
+Version: 0.99.4
 Authors@R:
     c(person(
         "Martin", "Morgan", role = "aut",
@@ -8,7 +8,7 @@ Authors@R:
         comment = c(ORCID = "0000-0002-5874-8148")
     ), person(
         "Michael", "Love", role = c("aut", "cre"),
-        email = "michaelisaiahlove@gamil.com",
+        email = "michaelisaiahlove@gmail.com",
         comment = c(ORCID = "0000-0001-8401-0545")
     ),
     person(
