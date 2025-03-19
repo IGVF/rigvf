@@ -71,15 +71,15 @@ Ensembl identifiers.
 
 ```{r}
 library(rigvf)
-rigvf::gene_variants(gene_name = "GCK")
+gene_variants(gene_name = "GCK")
 ```
 
 Note that we only receive a limited number of responses. We can change both
 the `page` of responses we receive and the `limit` per page:
 
 ```{r}
-rigvf::gene_variants(gene_name = "GCK", page=1L)
-rigvf::gene_variants(gene_name = "GCK", limit=50L)
+gene_variants(gene_name = "GCK", page=1L)
+gene_variants(gene_name = "GCK", limit=50L)
 ```
 
 We can also pass thresholds on the negative log10 p-value or the effect size, 
@@ -87,8 +87,8 @@ using the following letter combinations, `gt (>), gte (>=), lt (<), lte (<=)`,
 followed by a `:` and a value. See examples below:
 
 ```{r}
-rigvf::gene_variants(gene_name = "GCK", log10pvalue="gt:5.0")
-rigvf::gene_variants(gene_name = "GCK", effect_size="gt:0.5")
+gene_variants(gene_name = "GCK", log10pvalue="gt:5.0")
+gene_variants(gene_name = "GCK", effect_size="gt:0.5")
 ```
 
 The help page `?catalog_queries` outlines other available user-facing
@@ -99,7 +99,7 @@ For example, when querying genomic elements that are associated with a gene,
 we get back nested output:
 
 ```{r}
-res <- rigvf::gene_elements(gene_id = "ENSG00000187961", verbose = TRUE)
+res <- gene_elements(gene_id = "ENSG00000187961", verbose = TRUE)
 res
 
 res |>
@@ -127,7 +127,7 @@ The following directly queries the database for variants of an Ensembl
 gene id.
 
 ```{r}
-rigvf::db_gene_variants("ENSG00000106633", threshold = 0.85)
+db_gene_variants("ENSG00000106633", threshold = 0.85)
 ```
 
 The AQL is
@@ -154,7 +154,7 @@ library(plyranges)
 rng <- data.frame(seqnames="chr1", start=10e6+1, end=10.1e6) |>
   as_granges()
 
-e <- rigvf::elements(rng, limit=200L) |>
+e <- elements(rng, limit=200L) |>
   plyranges::filter(source != "ENCODE_EpiRaction")
 e
 ```
@@ -184,7 +184,7 @@ for more details).
 
 ```{r}
 # up to 200 variants:
-v <- rigvf::gene_variants(gene_name = "GCK", limit=200L, verbose=TRUE) |>
+v <- gene_variants(gene_name = "GCK", limit=200L, verbose=TRUE) |>
   dplyr::select(-c(gene, chr, source, source_url)) |>
   tidyr::unnest_wider(`sequence variant`) |>
   dplyr::rename(seqnames = chr) |>

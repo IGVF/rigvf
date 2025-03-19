@@ -97,7 +97,6 @@ db_gene_variants <-
         username = username, password = password
     )
 
-    ## FIXME: what if there are no results?
     j_pivot(response, as = "tibble")
 }
 
@@ -135,6 +134,5 @@ db_gene_elements <-
         username = username, password = password
     )
 
-    ## FIXME: what if there are no results?
     j_pivot(response, as = "tibble")
 }

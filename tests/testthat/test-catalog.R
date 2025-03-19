@@ -1,4 +1,4 @@
-test_that("gene_variants() works", {
+test_that("catalog request works", {
     skip_if_offline()
     catalog_host <- rigvf_config$get("catalog_host")
     on.exit(rigvf_config$set("catalog_host", catalog_host))

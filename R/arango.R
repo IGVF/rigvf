@@ -173,6 +173,5 @@ arango_cursor <-
         body = body, jwt_token = jwt_token
     )
 
-    ## FIXME: iterate while j_query(response, "hasMore", as = "R") == TRUE
     j_query(response, "result")
 }
