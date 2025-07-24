@@ -1,6 +1,6 @@
 Package: rigvf
 Title: R interface to the IGVF Catalog
-Version: 1.1.2
+Version: 1.1.3
 Authors@R:
     c(person(
         "Martin", "Morgan", role = "aut",
@@ -22,7 +22,7 @@ Description: The IGVF Catalog provides data on the impact of
 License: MIT + file LICENSE
 Depends: R (>= 4.1.0)
 Imports: methods, httr2, rjsoncons, dplyr, tidyr, rlang, memoise,
-    cachem, whisker, jsonlite, GenomicRanges, IRanges, GenomeInfoDb
+    cachem, whisker, jsonlite, GenomicRanges, IRanges, Seqinfo
 URL: https://IGVF.github.io/rigvf
 BugReports: https://github.com/IGVF/rigvf/issues
 Encoding: UTF-8

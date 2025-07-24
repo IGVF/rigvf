@@ -253,7 +253,7 @@ gene_elements <-
 #' @return `elements()` returns a GRanges object describing elements.
 #'
 #' @importFrom GenomicRanges GRanges seqnames start end
-#' @importFrom GenomeInfoDb genome genome<-
+#' @importFrom Seqinfo genome genome<-
 #' @importFrom IRanges IRanges
 #' @export
 elements <-
