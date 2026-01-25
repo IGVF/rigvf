@@ -82,7 +82,7 @@ range_to_string <-
 #' res <- rigvf::gene_elements(gene_id = "ENSG00000187961")
 #' res
 #' res |>
-#'     dplyr::select(elements) |>
+#'     tidyr::unnest_longer(elements) |>
 #'     tidyr::unnest_wider(elements)
 #'
 #' rng <- GenomicRanges::GRanges("chr1", IRanges::IRanges(1157520,1158189))
