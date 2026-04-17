@@ -102,9 +102,9 @@ we get back nested output:
 res <- gene_elements(gene_id = "ENSG00000187961", verbose = TRUE)
 res
 
-res |>
-    tidyr::unnest_longer(elements) |>
-    tidyr::unnest_wider(elements)
+#res |>
+#    tidyr::unnest_longer(elements) |>
+#    tidyr::unnest_wider(elements)
 ```
 
 ## GRanges-based queries
@@ -186,7 +186,7 @@ for more details).
 ```{r}
 # up to 200 variants:
 v <- gene_variants(gene_name = "GCK", limit=200L, verbose=TRUE) |>
-  dplyr::select(-c(gene, chr, source, source_url)) |>
+  dplyr::select(-c(gene, source, source_url)) |>
   tidyr::unnest_wider(sequence_variant) |>
   dplyr::rename(seqnames = chr) |>
   dplyr::mutate(start = pos + 1, end = pos + 1) |>
