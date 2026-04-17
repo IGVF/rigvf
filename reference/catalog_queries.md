@@ -154,72 +154,70 @@ pairs.
 ``` r
 
 rigvf::gene_variants(gene_name = "GCK")
-#> # A tibble: 25 × 12
-#>    sequence_variant      gene  study label log10pvalue effect_size method source
-#>    <chr>                 <chr> <chr> <chr>       <dbl> <list>      <list> <chr> 
-#>  1 variants/NC_000007.1… gene… stud… spli…        9.06 <NULL>      <NULL> EBI e…
-#>  2 variants/NC_000007.1… gene… stud… eQTL         7.93 <NULL>      <NULL> EBI e…
-#>  3 variants/NC_000007.1… gene… stud… eQTL         6.93 <NULL>      <NULL> EBI e…
-#>  4 variants/NC_000007.1… gene… stud… eQTL         8.22 <NULL>      <NULL> EBI e…
-#>  5 variants/NC_000007.1… gene… stud… eQTL         6.92 <NULL>      <NULL> EBI e…
-#>  6 variants/NC_000007.1… gene… stud… eQTL         7.54 <NULL>      <NULL> EBI e…
-#>  7 variants/NC_000007.1… gene… stud… spli…        9.39 <NULL>      <NULL> EBI e…
-#>  8 variants/NC_000007.1… gene… stud… eQTL        10.2  <NULL>      <NULL> EBI e…
-#>  9 variants/NC_000007.1… gene… stud… eQTL         7.03 <NULL>      <NULL> EBI e…
-#> 10 variants/NC_000007.1… gene… stud… eQTL         4.45 <NULL>      <NULL> EBI e…
+#> # A tibble: 25 × 18
+#>    gene          sequence_variant effect_size log10pvalue posterior_inclusion_…¹
+#>    <chr>         <chr>                  <dbl>       <dbl>                  <dbl>
+#>  1 genes/ENSG00… variants/NC_000…      -1.01         9.06                 0.0599
+#>  2 genes/ENSG00… variants/NC_000…      -0.347        7.93                 0.200 
+#>  3 genes/ENSG00… variants/NC_000…      -0.565        6.93                 0.103 
+#>  4 genes/ENSG00… variants/NC_000…       0.378        8.22                 0.0720
+#>  5 genes/ENSG00… variants/NC_000…      -0.319        6.92                 0.0422
+#>  6 genes/ENSG00… variants/NC_000…       0.349        7.54                 0.0170
+#>  7 genes/ENSG00… variants/NC_000…      -1.02         9.39                 0.144 
+#>  8 genes/ENSG00… variants/NC_000…      -0.340       10.2                  0.0234
+#>  9 genes/ENSG00… variants/NC_000…      -0.486        7.03                 0.0129
+#> 10 genes/ENSG00… variants/NC_000…       0.262        4.45                 0.138 
 #> # ℹ 15 more rows
-#> # ℹ 4 more variables: source_url <chr>, biological_context <chr>, chr <list>,
-#> #   name <chr>
+#> # ℹ abbreviated name: ¹​posterior_inclusion_probability
+#> # ℹ 13 more variables: standard_error <dbl>, z_score <dbl>,
+#> #   credible_set_min_r2 <dbl>, method <chr>, source <chr>, source_url <chr>,
+#> #   label <chr>, p_value <dbl>, biological_context <chr>, biosample_term <chr>,
+#> #   study <chr>, name <chr>, class <chr>
 
 rigvf::gene_variants(gene_name = "GCK", effect_size="gt:0.5")
 #> # A tibble: 0 × 0
 
 rigvf::gene_variants(gene_name = "GCK", verbose = TRUE)
-#> # A tibble: 25 × 12
-#>    sequence_variant  gene         study        label     log10pvalue effect_size
-#>    <list>            <list>       <list>       <chr>           <dbl> <list>     
-#>  1 <named list [16]> <named list> <named list> splice_Q…        9.06 <NULL>     
-#>  2 <named list [16]> <named list> <named list> eQTL             7.93 <NULL>     
-#>  3 <named list [16]> <named list> <named list> eQTL             6.93 <NULL>     
-#>  4 <named list [16]> <named list> <named list> eQTL             8.22 <NULL>     
-#>  5 <named list [16]> <named list> <named list> eQTL             6.92 <NULL>     
-#>  6 <named list [16]> <named list> <named list> eQTL             7.54 <NULL>     
-#>  7 <named list [16]> <named list> <named list> splice_Q…        9.39 <NULL>     
-#>  8 <named list [16]> <named list> <named list> eQTL            10.2  <NULL>     
-#>  9 <named list [16]> <named list> <named list> eQTL             7.03 <NULL>     
-#> 10 <named list [16]> <named list> <named list> eQTL             4.45 <NULL>     
+#> # A tibble: 25 × 18
+#>    gene         sequence_variant  effect_size log10pvalue posterior_inclusion_…¹
+#>    <list>       <list>                  <dbl>       <dbl>                  <dbl>
+#>  1 <named list> <named list [16]>      -1.01         9.06                 0.0599
+#>  2 <named list> <named list [16]>      -0.347        7.93                 0.200 
+#>  3 <named list> <named list [16]>      -0.565        6.93                 0.103 
+#>  4 <named list> <named list [16]>       0.378        8.22                 0.0720
+#>  5 <named list> <named list [16]>      -0.319        6.92                 0.0422
+#>  6 <named list> <named list [16]>       0.349        7.54                 0.0170
+#>  7 <named list> <named list [16]>      -1.02         9.39                 0.144 
+#>  8 <named list> <named list [16]>      -0.340       10.2                  0.0234
+#>  9 <named list> <named list [16]>      -0.486        7.03                 0.0129
+#> 10 <named list> <named list [16]>       0.262        4.45                 0.138 
 #> # ℹ 15 more rows
-#> # ℹ 6 more variables: method <list>, source <chr>, source_url <chr>,
-#> #   biological_context <chr>, chr <list>, name <chr>
+#> # ℹ abbreviated name: ¹​posterior_inclusion_probability
+#> # ℹ 13 more variables: standard_error <dbl>, z_score <dbl>,
+#> #   credible_set_min_r2 <dbl>, method <chr>, source <chr>, source_url <chr>,
+#> #   label <chr>, p_value <dbl>, biological_context <chr>, biosample_term <chr>,
+#> #   study <list>, name <chr>, class <chr>
 
 rigvf::variant_genes(spdi = "NC_000001.11:920568:G:A")
 #> # A tibble: 0 × 0
 
-res <- rigvf::gene_elements(gene_id = "ENSG00000187961")
-res
-#> # A tibble: 1 × 2
-#>   gene             elements   
-#>   <list>           <list>     
-#> 1 <named list [5]> <list [25]>
-res |>
-    tidyr::unnest_longer(elements) |>
-    tidyr::unnest_wider(elements)
-#> # A tibble: 25 × 14
-#>    gene             id    cell_type score model dataset element_type element_chr
-#>    <list>           <chr> <chr>     <lgl> <chr> <chr>   <chr>        <chr>      
-#>  1 <named list [5]> geno… CD8-posi… NA    IGVF  https:… tested elem… chr1       
-#>  2 <named list [5]> geno… CD8-posi… NA    IGVF  https:… tested elem… chr1       
-#>  3 <named list [5]> geno… CD8-posi… NA    IGVF  https:… tested elem… chr1       
-#>  4 <named list [5]> geno… CD8-posi… NA    IGVF  https:… tested elem… chr1       
-#>  5 <named list [5]> geno… CD8-posi… NA    IGVF  https:… tested elem… chr1       
-#>  6 <named list [5]> geno… CD8-posi… NA    IGVF  https:… tested elem… chr1       
-#>  7 <named list [5]> geno… CD8-posi… NA    IGVF  https:… tested elem… chr1       
-#>  8 <named list [5]> geno… CD8-posi… NA    IGVF  https:… tested elem… chr1       
-#>  9 <named list [5]> geno… CD8-posi… NA    IGVF  https:… tested elem… chr10      
-#> 10 <named list [5]> geno… CD8-posi… NA    IGVF  https:… tested elem… chr10      
+rigvf::gene_elements(gene_id = "ENSG00000187961")
+#> # A tibble: 25 × 13
+#>    name   label method class source source_url biological_context biosample_term
+#>    <chr>  <chr> <chr>  <chr> <chr>  <chr>      <chr>              <chr>         
+#>  1 expre… regu… Pertu… obse… IGVF   https://d… CD8-positive, alp… ontology_term…
+#>  2 expre… regu… Pertu… obse… IGVF   https://d… CD8-positive, alp… ontology_term…
+#>  3 expre… regu… Pertu… obse… IGVF   https://d… CD8-positive, alp… ontology_term…
+#>  4 expre… regu… Pertu… obse… IGVF   https://d… CD8-positive, alp… ontology_term…
+#>  5 expre… regu… Pertu… obse… IGVF   https://d… CD8-positive, alp… ontology_term…
+#>  6 expre… regu… Pertu… obse… IGVF   https://d… CD8-positive, alp… ontology_term…
+#>  7 expre… regu… Pertu… obse… IGVF   https://d… CD8-positive, alp… ontology_term…
+#>  8 expre… regu… Pertu… obse… IGVF   https://d… CD8-positive, alp… ontology_term…
+#>  9 expre… regu… Pertu… obse… IGVF   https://d… CD8-positive, alp… ontology_term…
+#> 10 expre… regu… Pertu… obse… IGVF   https://d… CD8-positive, alp… ontology_term…
 #> # ℹ 15 more rows
-#> # ℹ 6 more variables: element_start <int>, element_end <int>, name <chr>,
-#> #   method <chr>, class <chr>, files_filesets <chr>
+#> # ℹ 5 more variables: files_filesets <chr>, score <dbl>, p_value <int>,
+#> #   genomic_element <chr>, gene <chr>
 
 rng <- GenomicRanges::GRanges("chr1", IRanges::IRanges(1157520,1158189))
 
@@ -268,19 +266,20 @@ rigvf::elements(range = rng)
 #>   seqinfo: 1 sequence from hg38 genome; no seqlengths
 
 rigvf::element_genes(range = rng)
-#> # A tibble: 25 × 11
-#>    score source source_url     significant genomic_element gene  biosample name 
-#>    <dbl> <chr>  <chr>          <list>      <chr>           <chr> <chr>     <chr>
-#>  1 0.335 ENCODE https://www.e… <NULL>      genomic_elemen… gene… stomach … regu…
-#>  2 0.431 ENCODE https://www.e… <NULL>      genomic_elemen… gene… stomach … regu…
-#>  3 0.971 ENCODE https://www.e… <NULL>      genomic_elemen… gene… stomach … regu…
-#>  4 0.501 ENCODE https://www.e… <NULL>      genomic_elemen… gene… stomach … regu…
-#>  5 0.869 ENCODE https://www.e… <NULL>      genomic_elemen… gene… stomach … regu…
-#>  6 0.886 ENCODE https://www.e… <NULL>      genomic_elemen… gene… stomach … regu…
-#>  7 0.773 ENCODE https://www.e… <NULL>      genomic_elemen… gene… stomach … regu…
-#>  8 0.372 ENCODE https://www.e… <NULL>      genomic_elemen… gene… ovary fr… regu…
-#>  9 0.730 ENCODE https://www.e… <NULL>      genomic_elemen… gene… T-helper… regu…
-#> 10 0.564 ENCODE https://www.e… <NULL>      genomic_elemen… gene… T-helper… regu…
+#> # A tibble: 25 × 13
+#>    name   label method class source source_url biological_context biosample_term
+#>    <chr>  <chr> <chr>  <chr> <chr>  <chr>      <chr>              <chr>         
+#>  1 regul… pred… ENCOD… pred… ENCODE https://w… stomach from ENCD… ontology_term…
+#>  2 regul… pred… ENCOD… pred… ENCODE https://w… stomach from ENCD… ontology_term…
+#>  3 regul… pred… ENCOD… pred… ENCODE https://w… stomach from ENCD… ontology_term…
+#>  4 regul… pred… ENCOD… pred… ENCODE https://w… stomach from ENCD… ontology_term…
+#>  5 regul… pred… ENCOD… pred… ENCODE https://w… stomach from ENCD… ontology_term…
+#>  6 regul… pred… ENCOD… pred… ENCODE https://w… stomach from ENCD… ontology_term…
+#>  7 regul… pred… ENCOD… pred… ENCODE https://w… stomach from ENCD… ontology_term…
+#>  8 regul… pred… ENCOD… pred… ENCODE https://w… ovary from ENCDO4… ontology_term…
+#>  9 regul… pred… ENCOD… pred… ENCODE https://w… T-helper 17 cell … ontology_term…
+#> 10 regul… pred… ENCOD… pred… ENCODE https://w… T-helper 17 cell … ontology_term…
 #> # ℹ 15 more rows
-#> # ℹ 3 more variables: method <chr>, class <chr>, files_filesets <chr>
+#> # ℹ 5 more variables: files_filesets <chr>, score <dbl>, p_value <list>,
+#> #   genomic_element <chr>, gene <chr>
 ```

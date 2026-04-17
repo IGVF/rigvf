@@ -17,7 +17,7 @@ db_gene_elements() locates genomic elements associated with a
 
     <a class="navbar-brand me-2" href="../index.html">rigvf</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.3.6</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.3.7</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -117,73 +117,73 @@ associated with the gene.</p>
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">db_edges</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 35 × 2</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 33 × 2</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    name                             count</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                            <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> variants_variants           <span style="text-decoration: underline;">5</span>926<span style="text-decoration: underline;">156</span>444</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> coding_variants_phenotypes  <span style="text-decoration: underline;">1</span>095<span style="text-decoration: underline;">997</span>277</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> variants_coding_variants     942<span style="text-decoration: underline;">649</span>625</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> variants_proteins            363<span style="text-decoration: underline;">274</span>276</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> genomic_elements_genes       118<span style="text-decoration: underline;">801</span>843</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> variants_biosamples           63<span style="text-decoration: underline;">552</span>990</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> coding_variants_phenotypes  <span style="text-decoration: underline;">1</span>096<span style="text-decoration: underline;">012</span>420</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> variants_coding_variants     942<span style="text-decoration: underline;">433</span>097</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> variants_proteins            363<span style="text-decoration: underline;">608</span>815</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> genomic_elements_genes       118<span style="text-decoration: underline;">554</span>095</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> variants_biosamples           76<span style="text-decoration: underline;">044</span>822</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> variants_genes                18<span style="text-decoration: underline;">926</span>336</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> proteins_proteins             11<span style="text-decoration: underline;">486</span>365</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> variants_genomic_elements      8<span style="text-decoration: underline;">044</span>057</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> transcripts_genes_structure    4<span style="text-decoration: underline;">819</span>495</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 25 more rows</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> transcripts_genes_structure    4<span style="text-decoration: underline;">819</span>495</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> genes_genes                    3<span style="text-decoration: underline;">553</span>547</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 23 more rows</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">db_nodes</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 25 × 2</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    name                       count</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> variants              <span style="text-decoration: underline;">1</span>870<span style="text-decoration: underline;">809</span>859</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> coding_variants        942<span style="text-decoration: underline;">423</span>560</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> genomic_elements        84<span style="text-decoration: underline;">155</span>155</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> mm_variants             53<span style="text-decoration: underline;">413</span>453</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> genes_structure          4<span style="text-decoration: underline;">819</span>495</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> json_schema_test         3<span style="text-decoration: underline;">538</span>462</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> mm_genes_structure       3<span style="text-decoration: underline;">142</span>359</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> genomic_elements_keep    2<span style="text-decoration: underline;">542</span>843</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> mm_genomic_elements       <span style="text-decoration: underline;">926</span>843</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> ontology_terms            <span style="text-decoration: underline;">620</span>208</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    name                     count</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> variants            <span style="text-decoration: underline;">1</span>870<span style="text-decoration: underline;">948</span>793</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> coding_variants      942<span style="text-decoration: underline;">423</span>560</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> genomic_elements      84<span style="text-decoration: underline;">123</span>794</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> mm_variants           53<span style="text-decoration: underline;">413</span>453</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> genes_structure        4<span style="text-decoration: underline;">819</span>495</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> json_schema_test       3<span style="text-decoration: underline;">538</span>462</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> mm_genes_structure     3<span style="text-decoration: underline;">142</span>359</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> mm_genomic_elements     <span style="text-decoration: underline;">926</span>843</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> ontology_terms          <span style="text-decoration: underline;">659</span>567</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> mm_transcripts          <span style="text-decoration: underline;">278</span>375</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 15 more rows</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">db_gene_variants</span><span class="op">(</span><span class="st">"ENSG00000106633"</span>, threshold <span class="op">=</span> <span class="fl">4.0</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 82 × 31</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    `_key` `_id` `_from` `_to` `_rev` biological_context biological_process study</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> 4d57e… vari… varian… gene… _kqEy… ontology_terms/UB… ontology_terms/GO… stud…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> ed83d… vari… varian… gene… _kqEy… ontology_terms/UB… ontology_terms/GO… stud…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> 6b383… vari… varian… gene… _kqEy… ontology_terms/UB… ontology_terms/GO… stud…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> ee07e… vari… varian… gene… _kqEy… ontology_terms/UB… ontology_terms/GO… stud…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> 9ecd9… vari… varian… gene… _kqEy… ontology_terms/UB… ontology_terms/GO… stud…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> cb382… vari… varian… gene… _kqE5… ontology_terms/UB… ontology_terms/GO… stud…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> 1ae95… vari… varian… gene… _kqE5… ontology_terms/UB… ontology_terms/GO… stud…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> d2855… vari… varian… gene… _kqE5… ontology_terms/UB… ontology_terms/GO… stud…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> 800da… vari… varian… gene… _kqE5… ontology_terms/UB… ontology_terms/GO… stud…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> 3e45d… vari… varian… gene… _kqE5… ontology_terms/UB… ontology_terms/GO… stud…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 82 × 33</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    `_key`     `_id` `_from` `_to` `_rev` biosample_term biological_process study</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> cc4bdbbd9… vari… varian… gene… _lSEo… ontology_term… ontology_terms/GO… stud…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> c30b4a47f… vari… varian… gene… _lSEo… ontology_term… ontology_terms/GO… stud…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> 98f84be97… vari… varian… gene… _lSEo… ontology_term… ontology_terms/GO… stud…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> 0ac0b3302… vari… varian… gene… _lSEo… ontology_term… ontology_terms/GO… stud…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> 8038cc8af… vari… varian… gene… _lSEo… ontology_term… ontology_terms/GO… stud…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> 6b425d3f4… vari… varian… gene… _lSEo… ontology_term… ontology_terms/GO… stud…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> bcd7b389b… vari… varian… gene… _lSEo… ontology_term… ontology_terms/GO… stud…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> facd9b8cc… vari… varian… gene… _lSEu… ontology_term… ontology_terms/GO… stud…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> dd2f2af11… vari… varian… gene… _lSEu… ontology_term… ontology_terms/GO… stud…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> 448c345a9… vari… varian… gene… _lSEu… ontology_term… ontology_terms/GO… stud…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 72 more rows</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 23 more variables: simple_sample_summaries &lt;list&gt;, label &lt;chr&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   source &lt;chr&gt;, source_url &lt;chr&gt;, name &lt;chr&gt;, inverse_name &lt;chr&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   molecular_trait_id &lt;chr&gt;, gene_id &lt;chr&gt;, credible_set_id &lt;chr&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   variant_chromosome_position_ref_alt &lt;chr&gt;, rsid &lt;chr&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   credible_set_size &lt;int&gt;, posterior_inclusion_probability &lt;dbl&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   p_value &lt;dbl&gt;, log10pvalue &lt;dbl&gt;, beta &lt;dbl&gt;, standard_error &lt;dbl&gt;, …</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 25 more variables: biological_context &lt;chr&gt;, label &lt;chr&gt;, class &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   method &lt;chr&gt;, source &lt;chr&gt;, source_url &lt;chr&gt;, name &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   inverse_name &lt;chr&gt;, molecular_trait_id &lt;chr&gt;, gene_id &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   credible_set_id &lt;chr&gt;, variant_chromosome_position_ref_alt &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   rsid &lt;chr&gt;, credible_set_size &lt;int&gt;, posterior_inclusion_probability &lt;dbl&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   p_value &lt;dbl&gt;, log10pvalue &lt;dbl&gt;, standard_error &lt;dbl&gt;, z_score &lt;dbl&gt;, …</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">db_gene_elements</span><span class="op">(</span><span class="st">"ENSG00000106633"</span>, threshold <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 1,000 × 17</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    `_key`              `_id` `_from` `_to` `_rev` method score source source_url</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>               <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> genic_chr7_4414528… geno… genomi… gene… _kspG… ENCOD… 0.991 ENCODE https://w…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> genic_chr7_4415493… geno… genomi… gene… _kspG… ENCOD… 0.836 ENCODE https://w…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> promoter_chr7_4415… geno… genomi… gene… _kspG… ENCOD… 1.000 ENCODE https://w…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> genic_chr7_4414530… geno… genomi… gene… _kspG… ENCOD… 0.945 ENCODE https://w…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> genic_chr7_4414594… geno… genomi… gene… _kspG… ENCOD… 0.980 ENCODE https://w…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> genic_chr7_4414649… geno… genomi… gene… _kspG… ENCOD… 0.680 ENCODE https://w…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> genic_chr7_4415740… geno… genomi… gene… _kspG… ENCOD… 0.689 ENCODE https://w…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> promoter_chr7_4415… geno… genomi… gene… _kspG… ENCOD… 1.000 ENCODE https://w…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> intergenic_chr7_44… geno… genomi… gene… _kspG… ENCOD… 0.824 ENCODE https://w…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> intergenic_chr7_44… geno… genomi… gene… _kspG… ENCOD… 0.503 ENCODE https://w…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> genic_chr7_4414528… geno… genomi… gene… _lSmr… ENCOD… 0.991 ENCODE https://w…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> genic_chr7_4415493… geno… genomi… gene… _lSmr… ENCOD… 0.836 ENCODE https://w…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> promoter_chr7_4415… geno… genomi… gene… _lSmr… ENCOD… 1.000 ENCODE https://w…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> genic_chr7_4414530… geno… genomi… gene… _lSms… ENCOD… 0.945 ENCODE https://w…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> genic_chr7_4414594… geno… genomi… gene… _lSms… ENCOD… 0.980 ENCODE https://w…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> genic_chr7_4414649… geno… genomi… gene… _lSms… ENCOD… 0.680 ENCODE https://w…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> genic_chr7_4415740… geno… genomi… gene… _lSms… ENCOD… 0.689 ENCODE https://w…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> promoter_chr7_4415… geno… genomi… gene… _lSms… ENCOD… 1.000 ENCODE https://w…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> intergenic_chr7_44… geno… genomi… gene… _lSms… ENCOD… 0.824 ENCODE https://w…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> intergenic_chr7_44… geno… genomi… gene… _lSms… ENCOD… 0.503 ENCODE https://w…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 990 more rows</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 8 more variables: files_filesets &lt;chr&gt;, biological_context &lt;chr&gt;,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   treatments_term_ids &lt;list&gt;, name &lt;chr&gt;, inverse_name &lt;chr&gt;, class &lt;chr&gt;,</span></span>

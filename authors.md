@@ -15,12 +15,12 @@ Source:
 [`DESCRIPTION`](https://github.com/IGVF/rigvf/blob/devel/DESCRIPTION)
 
 Morgan M, Love M (2026). *rigvf: R interface to the IGVF Catalog*. R
-package version 1.3.6, <https://IGVF.github.io/rigvf>.
+package version 1.3.7, <https://IGVF.github.io/rigvf>.
 
     @Manual{,
       title = {rigvf: R interface to the IGVF Catalog},
       author = {Martin Morgan and Michael Love},
       year = {2026},
-      note = {R package version 1.3.6},
+      note = {R package version 1.3.7},
       url = {https://IGVF.github.io/rigvf},
     }
