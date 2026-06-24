@@ -25,8 +25,7 @@
 #' @return `arango_request()` returns the JSON response as a
 #'     character(1) vector.
 #'
-#' @importFrom httr2 request req_url_path_append req_url_query
-#'     req_auth_bearer_token req_body_raw req_perform resp_body_string
+#' @importFrom httr2 request req_url_path_append req_url_query req_auth_bearer_token req_body_raw req_perform resp_body_string
 arango_request <-
     function(path, ..., body = NULL, jwt_token = NULL)
 {
@@ -83,8 +82,7 @@ arango_auth <-
 #'
 #' @importFrom rjsoncons j_query
 #'
-#' @importFrom dplyr tibble .data bind_cols mutate filter select
-#'     arrange case_match desc
+#' @importFrom dplyr tibble .data bind_cols mutate filter select arrange case_match desc
 #'
 #' @importFrom tidyr unnest_wider
 arango_collections <-

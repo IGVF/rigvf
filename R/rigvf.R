@@ -85,6 +85,7 @@ rigvf_config <- local({
     }
     ## initial values
     set("catalog_host", "https://api.catalogkg.igvf.org")
+    set("portal_host", "https://api.data.igvf.org")
     set("db_host", "https://db.catalog.igvf.org")
     set("db_name", "igvf")
     ## 'guest' as default user

@@ -1,3 +1,7 @@
+# rigvf 1.3.7
+
+* Added `portal_files()` to query files from the IGVF Data Portal by content type
+
 # rigvf 0.0.5
 
 * Added elements and elements-to-genes query based on GRanges
