@@ -33,6 +33,11 @@ portal_request <-
 #' @return `portal_files()` returns a tibble of matching files, with
 #'     columns derived from the `@@graph` array of the JSON-LD response.
 #'
+#' @details Some columns in the returned tibble are list-columns 
+#'     where each element is a length-1 character vector. Use
+#'     `purrr::map_chr(column, 1)` to flatten these before further
+#'     manipulation.
+#'
 #' @importFrom rjsoncons j_query j_pivot
 #'
 #' @examples

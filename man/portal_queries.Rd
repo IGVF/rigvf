@@ -31,6 +31,12 @@ columns derived from the \verb{@graph} array of the JSON-LD response.
 Portal by content type and optional additional filters. The API
 is documented at \url{https://data.igvf.org/help/igvf-api-spec/}.
 }
+\details{
+Some columns in the returned tibble are list-columns
+where each element is a length-1 character vector. Use
+\code{purrr::map_chr(column, 1)} to flatten these before further
+manipulation.
+}
 \examples{
 portal_files("reporter genomic variant effects")
 
