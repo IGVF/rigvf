@@ -75,13 +75,14 @@ map_chr(spdi_list, 1)
 sort(lengths(spdi_list))
 all_spdi <- reduce(spdi_list, union)
 length(all_spdi)
+
 library(UpSetR)
 top3_idx <- order(lengths(spdi_list), decreasing = TRUE)[1:3]
 top3 <- spdi_list[top3_idx]
 fg_released |>
     filter(accession %in% names(top3)) |>
     select(accession, lab)
-upset(fromList(top3), nsets = 3)
+upset(fromList(top3), nsets = 3, text.scale = 2)
 
 # this spec file downloaded on Aug 3 2026 from 
 # https://data.igvf.org/documents/435a7653-996b-49cc-b8e3-ee790d1d7510/
@@ -192,7 +193,7 @@ fg_phenotypes |>
     scale_y_log10() +
     labs(x = "Number of variants (log10)", y = "Median output coverage (log10)",
          color = "Lab") +
-    theme_bw()
+    theme_bw(base_size = 16)
 
 
 ##########
