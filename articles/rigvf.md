@@ -411,9 +411,6 @@ library(TxDb.Hsapiens.UCSC.hg38.knownGene)
 #>     Vignettes contain introductory material; view with
 #>     'browseVignettes()'. To cite Bioconductor, see
 #>     'citation("Biobase")', and for packages 'citation("pkgname")'.
-#> Registered S3 method overwritten by 'bit64':
-#>   method          from 
-#>   print.bitstring tools
 #> 
 #> Attaching package: 'AnnotationDbi'
 #> The following object is masked from 'package:dplyr':
@@ -471,7 +468,7 @@ variants](rigvf_files/figure-html/plotgardener-1.png)
 ``` r
 
 sessionInfo()
-#> R Under development (unstable) (2026-04-12 r89873)
+#> R version 4.6.1 (2026-06-24)
 #> Platform: x86_64-pc-linux-gnu
 #> Running under: Ubuntu 24.04.4 LTS
 #> 
@@ -497,67 +494,68 @@ sessionInfo()
 #> other attached packages:
 #>  [1] org.Hs.eg.db_3.23.1                     
 #>  [2] TxDb.Hsapiens.UCSC.hg38.knownGene_3.22.0
-#>  [3] GenomicFeatures_1.63.2                  
-#>  [4] AnnotationDbi_1.73.1                    
-#>  [5] Biobase_2.71.0                          
-#>  [6] plotgardener_1.17.0                     
+#>  [3] GenomicFeatures_1.65.0                  
+#>  [4] AnnotationDbi_1.75.2                    
+#>  [5] Biobase_2.73.2                          
+#>  [6] plotgardener_1.19.0                     
 #>  [7] tibble_3.3.1                            
-#>  [8] plyranges_1.31.7                        
+#>  [8] plyranges_1.33.2                        
 #>  [9] dplyr_1.2.1                             
-#> [10] GenomicRanges_1.63.2                    
-#> [11] Seqinfo_1.1.0                           
-#> [12] IRanges_2.45.0                          
-#> [13] S4Vectors_0.49.1-1                      
-#> [14] BiocGenerics_0.57.0                     
+#> [10] GenomicRanges_1.65.1                    
+#> [11] Seqinfo_1.3.0                           
+#> [12] IRanges_2.47.2                          
+#> [13] S4Vectors_0.51.6                        
+#> [14] BiocGenerics_0.59.10                    
 #> [15] generics_0.1.4                          
 #> [16] rigvf_1.3.7                             
 #> 
 #> loaded via a namespace (and not attached):
-#>  [1] tidyselect_1.2.1            blob_1.3.0                 
-#>  [3] farver_2.1.2                Biostrings_2.79.5          
-#>  [5] S7_0.2.1-1                  bitops_1.0-9               
-#>  [7] fastmap_1.2.0               RCurl_1.98-1.18            
-#>  [9] GenomicAlignments_1.47.0    XML_3.99-0.23              
-#> [11] digest_0.6.39               lifecycle_1.0.5            
-#> [13] KEGGREST_1.51.1             RSQLite_2.4.6              
-#> [15] magrittr_2.0.5              compiler_4.7.0             
-#> [17] rlang_1.2.0                 sass_0.4.10                
-#> [19] tools_4.7.0                 utf8_1.2.6                 
-#> [21] yaml_2.3.12                 data.table_1.18.2.1        
-#> [23] rtracklayer_1.71.3          knitr_1.51                 
-#> [25] S4Arrays_1.11.1             htmlwidgets_1.6.4          
-#> [27] bit_4.6.0                   curl_7.0.0                 
-#> [29] DelayedArray_0.37.1         RColorBrewer_1.1-3         
-#> [31] abind_1.4-8                 BiocParallel_1.45.0        
-#> [33] withr_3.0.2                 purrr_1.2.2                
-#> [35] desc_1.4.3                  grid_4.7.0                 
-#> [37] Rhdf5lib_1.33.6             ggplot2_4.0.2              
-#> [39] scales_1.4.0                SummarizedExperiment_1.41.1
-#> [41] cli_3.6.6                   rmarkdown_2.31             
-#> [43] crayon_1.5.3                ragg_1.5.2                 
-#> [45] otel_0.2.0                  httr_1.4.8                 
-#> [47] rjson_0.2.23                DBI_1.3.0                  
-#> [49] cachem_1.1.0                rhdf5_2.55.16              
-#> [51] parallel_4.7.0              ggplotify_0.1.3            
-#> [53] XVector_0.51.0              restfulr_0.0.16            
-#> [55] matrixStats_1.5.0           vctrs_0.7.3                
-#> [57] yulab.utils_0.2.4           Matrix_1.7-5               
-#> [59] jsonlite_2.0.0              gridGraphics_0.5-1         
-#> [61] bit64_4.6.0-1               systemfonts_1.3.2          
-#> [63] strawr_0.0.92               tidyr_1.3.2                
-#> [65] jquerylib_0.1.4             glue_1.8.1                 
-#> [67] pkgdown_2.2.0.9000          codetools_0.2-20           
-#> [69] gtable_0.3.6                GenomeInfoDb_1.47.2        
-#> [71] BiocIO_1.21.0               UCSC.utils_1.7.1           
-#> [73] pillar_1.11.1               rhdf5filters_1.23.3        
-#> [75] rappdirs_0.3.4              htmltools_0.5.9            
-#> [77] R6_2.6.1                    httr2_1.2.2                
-#> [79] textshaping_1.0.5           evaluate_1.0.5             
-#> [81] lattice_0.22-9              png_0.1-9                  
-#> [83] Rsamtools_2.27.2            cigarillo_1.1.0            
-#> [85] memoise_2.0.1               bslib_0.10.0               
-#> [87] rjsoncons_1.3.2             Rcpp_1.1.1-1               
-#> [89] SparseArray_1.11.13         whisker_0.4.1              
-#> [91] xfun_0.57                   fs_2.0.1                   
-#> [93] MatrixGenerics_1.23.0       pkgconfig_2.0.3
+#>  [1] DBI_1.3.0                   bitops_1.1-0               
+#>  [3] httr2_1.3.0                 rlang_1.3.0                
+#>  [5] magrittr_2.0.5              otel_0.2.0                 
+#>  [7] matrixStats_1.5.0           compiler_4.6.1             
+#>  [9] RSQLite_3.53.3              png_0.1-9                  
+#> [11] systemfonts_1.3.2           vctrs_0.7.3                
+#> [13] pkgconfig_2.0.3             crayon_1.5.3               
+#> [15] fastmap_1.2.0               XVector_0.53.0             
+#> [17] utf8_1.2.6                  Rsamtools_2.29.0           
+#> [19] rmarkdown_2.31              UCSC.utils_1.9.0           
+#> [21] strawr_0.0.92               ragg_1.5.2                 
+#> [23] purrr_1.2.2                 bit_4.6.0                  
+#> [25] xfun_0.60                   cachem_1.1.0               
+#> [27] cigarillo_1.3.1             GenomeInfoDb_1.49.1        
+#> [29] jsonlite_2.0.0              blob_1.3.0                 
+#> [31] rhdf5filters_1.25.3         DelayedArray_0.39.3        
+#> [33] Rhdf5lib_2.1.0              BiocParallel_1.47.0        
+#> [35] parallel_4.6.1              R6_2.6.1                   
+#> [37] bslib_0.12.0                RColorBrewer_1.1-3         
+#> [39] rtracklayer_1.73.0          jquerylib_0.1.4            
+#> [41] Rcpp_1.1.2                  SummarizedExperiment_1.43.0
+#> [43] knitr_1.51                  BiocBaseUtils_1.15.1       
+#> [45] Matrix_1.7-6                tidyselect_1.2.1           
+#> [47] abind_1.4-8                 yaml_2.3.12                
+#> [49] codetools_0.2-20            curl_7.1.0                 
+#> [51] rjsoncons_1.3.3             lattice_0.22-9             
+#> [53] withr_3.0.3                 KEGGREST_1.53.6            
+#> [55] S7_0.2.2                    evaluate_1.0.5             
+#> [57] gridGraphics_0.5-1          desc_1.4.3                 
+#> [59] Biostrings_2.81.6           pillar_1.11.1              
+#> [61] MatrixGenerics_1.25.0       whisker_0.4.1              
+#> [63] RCurl_1.98-1.19             ggplot2_4.0.3              
+#> [65] scales_1.4.0                glue_1.8.1                 
+#> [67] tools_4.6.1                 BiocIO_1.23.3              
+#> [69] data.table_1.18.4           GenomicAlignments_1.49.1   
+#> [71] fs_2.1.0                    XML_3.99-0.23              
+#> [73] rhdf5_2.57.3                grid_4.6.1                 
+#> [75] tidyr_1.3.2                 restfulr_0.0.17            
+#> [77] cli_3.6.6                   rappdirs_0.3.4             
+#> [79] textshaping_1.0.5           S4Arrays_1.13.0            
+#> [81] gtable_0.3.6                yulab.utils_0.2.4          
+#> [83] sass_0.4.10                 digest_0.6.39              
+#> [85] SparseArray_1.13.2          ggplotify_0.1.3            
+#> [87] rjson_0.2.23                htmlwidgets_1.6.4          
+#> [89] farver_2.1.2                memoise_2.0.1              
+#> [91] htmltools_0.5.9             pkgdown_2.2.1.9000         
+#> [93] lifecycle_1.0.5             httr_1.4.8                 
+#> [95] bit64_4.8.2
 ```

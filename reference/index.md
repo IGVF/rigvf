@@ -17,6 +17,11 @@
   [`db_gene_elements()`](https://IGVF.github.io/rigvf/reference/db_queries.md)
   : Query the IGVF Catalog via ArangoDB
 
+## Query the IGVF Data Portal
+
+- [`portal_files()`](https://IGVF.github.io/rigvf/reference/portal_queries.md)
+  : Query the IGVF Data Portal
+
 ## Internal interface functions
 
 - [`arango_request()`](https://IGVF.github.io/rigvf/reference/arango.md)
