@@ -121,6 +121,7 @@ library(ggrepel)
 library(tidyr)
 
 fg_coverage |>
+    drop_na() |>
     mutate(lab_name = gsub("^/labs/|/$", "", lab)) |>
     pivot_longer(c(med_input, med_output), names_to = "measure", values_to = "median_coverage") |>
     mutate(measure = recode(measure, med_input = "Input", med_output = "Output")) |>
@@ -136,6 +137,62 @@ fg_coverage |>
         title = "FG file coverage vs variant count") +
     theme_bw()
 
+##########
+
+# Annotate files with associated phenotypes via CLS
+# Focus on files with < 1e5 variants (these are the designed assays)
+
+fg_small <- fg_coverage |> filter(n_variants < 1e5)
+
+# construct_library_sets is embedded in the analysis set response as a data frame;
+# associated_phenotypes is a list column — [[1]]$term_name gives the character vector.
+
+get_cls_info <- function(acc) {
+    file_obj  <- jsonlite::fromJSON(portal_request(paste0("/files/", acc, "/")))
+    aset_path <- file_obj$file_set$`@id`
+    if (!grepl("^/analysis-sets/", aset_path))
+        stop(acc, ": file_set is not an analysis set: ", aset_path)
+
+    aset_obj <- jsonlite::fromJSON(portal_request(aset_path))
+    cls_df   <- aset_obj$construct_library_sets
+
+    list(
+        n_cls       = NROW(cls_df),
+        cls_summary = paste(cls_df$summary, collapse = "; "),
+        phenotypes  = unique(unlist(map(cls_df$associated_phenotypes, \(ap) ap$term_name)))
+    )
+}
+
+fg_phenotypes <- fg_small |>
+    mutate(
+        cls_info    = map(accession, get_cls_info),
+        n_cls       = map_int(cls_info, "n_cls"),
+        cls_summary = map_chr(cls_info, "cls_summary"),
+        phenotypes  = map(cls_info, "phenotypes")
+    ) |>
+    select(-cls_info)
+
+cls_summary_map <- readr::read_csv("inst/scripts/cls_summary_map.csv", show_col_types = FALSE)
+
+fg_phenotypes <- fg_phenotypes |>
+    left_join(cls_summary_map, by = "cls_summary")
+
+fg_phenotypes |>
+    filter(n_cls > 0) |>
+    select(accession, lab, n_variants, n_cls, cls_short_summary, phenotypes)
+
+fg_phenotypes |>
+    filter(n_cls > 0) |>
+    filter(!is.na(med_output)) |>
+    mutate(lab_name = gsub("^/labs/|/$", "", lab)) |>
+    ggplot(aes(n_variants, med_output, label = cls_short_summary, color = lab_name)) +
+    geom_point() +
+    geom_text_repel(size = 3, max.overlaps = Inf) +
+    scale_x_log10() +
+    scale_y_log10() +
+    labs(x = "Number of variants (log10)", y = "Median output coverage (log10)",
+         color = "Lab") +
+    theme_bw()
 
 
 ##########
