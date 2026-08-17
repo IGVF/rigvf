@@ -73,58 +73,39 @@ associated with the gene.
 
 ``` r
 db_edges()
-#> # A tibble: 33 × 2
-#>    name                             count
-#>    <chr>                            <dbl>
-#>  1 variants_variants           5926156444
-#>  2 coding_variants_phenotypes  1096012420
-#>  3 variants_coding_variants     942433097
-#>  4 variants_proteins            363608815
-#>  5 genomic_elements_genes       118554095
-#>  6 variants_biosamples           76044822
-#>  7 variants_genes                18926336
-#>  8 proteins_proteins             11486365
-#>  9 transcripts_genes_structure    4819495
-#> 10 genes_genes                    3553547
-#> # ℹ 23 more rows
+#> # A tibble: 35 × 2
+#>    name                                   count
+#>    <chr>                                  <dbl>
+#>  1 variants_variants                 5926156444
+#>  2 coding_variants_phenotypes        1096014005
+#>  3 variants_coding_variants           942433097
+#>  4 variants_proteins                  363608815
+#>  5 genomic_elements_genes             187515481
+#>  6 variants_biosamples                 76034335
+#>  7 variants_genes                      18926583
+#>  8 proteins_proteins                   11486365
+#>  9 transcripts_genes_structure          4819495
+#> 10 mm_transcripts_mm_genes_structure    3142359
+#> # ℹ 25 more rows
 
 db_nodes()
-#> # A tibble: 25 × 2
+#> # A tibble: 27 × 2
 #>    name                     count
 #>    <chr>                    <dbl>
-#>  1 variants            1870948793
+#>  1 variants            1870948004
 #>  2 coding_variants      942423560
-#>  3 genomic_elements      84123794
+#>  3 genomic_elements      93483021
 #>  4 mm_variants           53413453
-#>  5 genes_structure        4819495
-#>  6 json_schema_test       3538462
+#>  5 variants_IGVF         17338787
+#>  6 genes_structure        4819495
 #>  7 mm_genes_structure     3142359
 #>  8 mm_genomic_elements     926843
-#>  9 ontology_terms          659567
+#>  9 ontology_terms          869236
 #> 10 mm_transcripts          278375
-#> # ℹ 15 more rows
+#> # ℹ 17 more rows
 
 db_gene_variants("ENSG00000106633", threshold = 4.0)
-#> # A tibble: 82 × 33
-#>    `_key`     `_id` `_from` `_to` `_rev` biosample_term biological_process study
-#>    <chr>      <chr> <chr>   <chr> <chr>  <chr>          <chr>              <chr>
-#>  1 cc4bdbbd9… vari… varian… gene… _lSEo… ontology_term… ontology_terms/GO… stud…
-#>  2 c30b4a47f… vari… varian… gene… _lSEo… ontology_term… ontology_terms/GO… stud…
-#>  3 98f84be97… vari… varian… gene… _lSEo… ontology_term… ontology_terms/GO… stud…
-#>  4 0ac0b3302… vari… varian… gene… _lSEo… ontology_term… ontology_terms/GO… stud…
-#>  5 8038cc8af… vari… varian… gene… _lSEo… ontology_term… ontology_terms/GO… stud…
-#>  6 6b425d3f4… vari… varian… gene… _lSEo… ontology_term… ontology_terms/GO… stud…
-#>  7 bcd7b389b… vari… varian… gene… _lSEo… ontology_term… ontology_terms/GO… stud…
-#>  8 facd9b8cc… vari… varian… gene… _lSEu… ontology_term… ontology_terms/GO… stud…
-#>  9 dd2f2af11… vari… varian… gene… _lSEu… ontology_term… ontology_terms/GO… stud…
-#> 10 448c345a9… vari… varian… gene… _lSEu… ontology_term… ontology_terms/GO… stud…
-#> # ℹ 72 more rows
-#> # ℹ 25 more variables: biological_context <chr>, label <chr>, class <chr>,
-#> #   method <chr>, source <chr>, source_url <chr>, name <chr>,
-#> #   inverse_name <chr>, molecular_trait_id <chr>, gene_id <chr>,
-#> #   credible_set_id <chr>, variant_chromosome_position_ref_alt <chr>,
-#> #   rsid <chr>, credible_set_size <int>, posterior_inclusion_probability <dbl>,
-#> #   p_value <dbl>, log10pvalue <dbl>, standard_error <dbl>, z_score <dbl>, …
+#> # A tibble: 0 × 0
 
 db_gene_elements("ENSG00000106633", threshold = 0.5)
 #> # A tibble: 1,000 × 17

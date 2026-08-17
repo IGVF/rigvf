@@ -60,25 +60,25 @@ with “GCK”; one could also use, e.g., Ensembl identifiers.
 
 library(rigvf)
 gene_variants(gene_name = "GCK")
-#> # A tibble: 25 × 18
-#>    gene          sequence_variant effect_size log10pvalue posterior_inclusion_…¹
-#>    <chr>         <chr>                  <dbl>       <dbl>                  <dbl>
-#>  1 genes/ENSG00… variants/NC_000…      -1.01         9.06                 0.0599
-#>  2 genes/ENSG00… variants/NC_000…      -0.347        7.93                 0.200 
-#>  3 genes/ENSG00… variants/NC_000…      -0.565        6.93                 0.103 
-#>  4 genes/ENSG00… variants/NC_000…       0.378        8.22                 0.0720
-#>  5 genes/ENSG00… variants/NC_000…      -0.319        6.92                 0.0422
-#>  6 genes/ENSG00… variants/NC_000…       0.349        7.54                 0.0170
-#>  7 genes/ENSG00… variants/NC_000…      -1.02         9.39                 0.144 
-#>  8 genes/ENSG00… variants/NC_000…      -0.340       10.2                  0.0234
-#>  9 genes/ENSG00… variants/NC_000…      -0.486        7.03                 0.0129
-#> 10 genes/ENSG00… variants/NC_000…       0.262        4.45                 0.138 
+#> # A tibble: 25 × 19
+#>    gene     sequence_variant effect_size neg_log10_pvalue posterior_inclusion_…¹
+#>    <chr>    <chr>                  <dbl>            <dbl>                  <dbl>
+#>  1 genes/E… variants/NC_000…      -1.01              9.06                 0.0599
+#>  2 genes/E… variants/NC_000…      -0.347             7.93                 0.200 
+#>  3 genes/E… variants/NC_000…      -0.565             6.93                 0.103 
+#>  4 genes/E… variants/NC_000…       0.378             8.22                 0.0720
+#>  5 genes/E… variants/NC_000…      -0.319             6.92                 0.0422
+#>  6 genes/E… variants/NC_000…       0.349             7.54                 0.0170
+#>  7 genes/E… variants/NC_000…      -1.02              9.39                 0.144 
+#>  8 genes/E… variants/NC_000…      -0.340            10.2                  0.0234
+#>  9 genes/E… variants/NC_000…      -0.486             7.03                 0.0129
+#> 10 genes/E… variants/NC_000…       0.262             4.45                 0.138 
 #> # ℹ 15 more rows
 #> # ℹ abbreviated name: ¹​posterior_inclusion_probability
-#> # ℹ 13 more variables: standard_error <dbl>, z_score <dbl>,
+#> # ℹ 14 more variables: standard_error <dbl>, z_score <dbl>,
 #> #   credible_set_min_r2 <dbl>, method <chr>, source <chr>, source_url <chr>,
 #> #   label <chr>, p_value <dbl>, biological_context <chr>, biosample_term <chr>,
-#> #   study <chr>, name <chr>, class <chr>
+#> #   study <chr>, name <chr>, class <chr>, files_filesets <chr>
 ```
 
 Note that we only receive a limited number of responses. We can change
@@ -87,45 +87,45 @@ both the `page` of responses we receive and the `limit` per page:
 ``` r
 
 gene_variants(gene_name = "GCK", page=1L)
-#> # A tibble: 25 × 18
-#>    gene          sequence_variant effect_size log10pvalue posterior_inclusion_…¹
-#>    <chr>         <chr>                  <dbl>       <dbl>                  <dbl>
-#>  1 genes/ENSG00… variants/NC_000…      -0.661       10.0                  0.196 
-#>  2 genes/ENSG00… variants/NC_000…      -0.339        7.74                 0.128 
-#>  3 genes/ENSG00… variants/NC_000…      -0.486       20.2                  0.997 
-#>  4 genes/ENSG00… variants/NC_000…       0.439       11.0                  0.218 
-#>  5 genes/ENSG00… variants/NC_000…      -0.387       11.3                  0.873 
-#>  6 genes/ENSG00… variants/NC_000…      -0.336        7.32                 0.107 
-#>  7 genes/ENSG00… variants/NC_000…       0.395        9.62                 0.0801
-#>  8 genes/ENSG00… variants/NC_000…      -0.315        6.35                 0.0180
-#>  9 genes/ENSG00… variants/NC_000…      -0.316        6.57                 0.0299
-#> 10 genes/ENSG00… variants/NC_000…      -1.02         9.40                 0.148 
+#> # A tibble: 25 × 19
+#>    gene     sequence_variant effect_size neg_log10_pvalue posterior_inclusion_…¹
+#>    <chr>    <chr>                  <dbl>            <dbl>                  <dbl>
+#>  1 genes/E… variants/NC_000…      -0.661            10.0                  0.196 
+#>  2 genes/E… variants/NC_000…      -0.339             7.74                 0.128 
+#>  3 genes/E… variants/NC_000…      -0.486            20.2                  0.997 
+#>  4 genes/E… variants/NC_000…       0.439            11.0                  0.218 
+#>  5 genes/E… variants/NC_000…      -0.387            11.3                  0.873 
+#>  6 genes/E… variants/NC_000…      -0.336             7.32                 0.107 
+#>  7 genes/E… variants/NC_000…       0.395             9.62                 0.0801
+#>  8 genes/E… variants/NC_000…      -0.315             6.35                 0.0180
+#>  9 genes/E… variants/NC_000…      -0.316             6.57                 0.0299
+#> 10 genes/E… variants/NC_000…      -1.02              9.40                 0.148 
 #> # ℹ 15 more rows
 #> # ℹ abbreviated name: ¹​posterior_inclusion_probability
-#> # ℹ 13 more variables: standard_error <dbl>, z_score <dbl>,
+#> # ℹ 14 more variables: standard_error <dbl>, z_score <dbl>,
 #> #   credible_set_min_r2 <dbl>, method <chr>, source <chr>, source_url <chr>,
 #> #   label <chr>, p_value <dbl>, biological_context <chr>, biosample_term <chr>,
-#> #   study <chr>, name <chr>, class <chr>
+#> #   study <chr>, name <chr>, class <chr>, files_filesets <chr>
 gene_variants(gene_name = "GCK", limit=50L)
-#> # A tibble: 50 × 18
-#>    gene          sequence_variant effect_size log10pvalue posterior_inclusion_…¹
-#>    <chr>         <chr>                  <dbl>       <dbl>                  <dbl>
-#>  1 genes/ENSG00… variants/NC_000…      -1.01         9.06                 0.0599
-#>  2 genes/ENSG00… variants/NC_000…      -0.347        7.93                 0.200 
-#>  3 genes/ENSG00… variants/NC_000…      -0.565        6.93                 0.103 
-#>  4 genes/ENSG00… variants/NC_000…       0.378        8.22                 0.0720
-#>  5 genes/ENSG00… variants/NC_000…      -0.319        6.92                 0.0422
-#>  6 genes/ENSG00… variants/NC_000…       0.349        7.54                 0.0170
-#>  7 genes/ENSG00… variants/NC_000…      -1.02         9.39                 0.144 
-#>  8 genes/ENSG00… variants/NC_000…      -0.340       10.2                  0.0234
-#>  9 genes/ENSG00… variants/NC_000…      -0.486        7.03                 0.0129
-#> 10 genes/ENSG00… variants/NC_000…       0.262        4.45                 0.138 
+#> # A tibble: 50 × 19
+#>    gene     sequence_variant effect_size neg_log10_pvalue posterior_inclusion_…¹
+#>    <chr>    <chr>                  <dbl>            <dbl>                  <dbl>
+#>  1 genes/E… variants/NC_000…      -1.01              9.06                 0.0599
+#>  2 genes/E… variants/NC_000…      -0.347             7.93                 0.200 
+#>  3 genes/E… variants/NC_000…      -0.565             6.93                 0.103 
+#>  4 genes/E… variants/NC_000…       0.378             8.22                 0.0720
+#>  5 genes/E… variants/NC_000…      -0.319             6.92                 0.0422
+#>  6 genes/E… variants/NC_000…       0.349             7.54                 0.0170
+#>  7 genes/E… variants/NC_000…      -1.02              9.39                 0.144 
+#>  8 genes/E… variants/NC_000…      -0.340            10.2                  0.0234
+#>  9 genes/E… variants/NC_000…      -0.486             7.03                 0.0129
+#> 10 genes/E… variants/NC_000…       0.262             4.45                 0.138 
 #> # ℹ 40 more rows
 #> # ℹ abbreviated name: ¹​posterior_inclusion_probability
-#> # ℹ 13 more variables: standard_error <dbl>, z_score <dbl>,
+#> # ℹ 14 more variables: standard_error <dbl>, z_score <dbl>,
 #> #   credible_set_min_r2 <dbl>, method <chr>, source <chr>, source_url <chr>,
 #> #   label <chr>, p_value <dbl>, biological_context <chr>, biosample_term <chr>,
-#> #   study <chr>, name <chr>, class <chr>
+#> #   study <chr>, name <chr>, class <chr>, files_filesets <chr>
 ```
 
 We can also pass thresholds on the negative log10 p-value or the effect
@@ -136,25 +136,25 @@ examples below:
 ``` r
 
 gene_variants(gene_name = "GCK", log10pvalue="gt:5.0")
-#> # A tibble: 25 × 18
-#>    gene          sequence_variant effect_size log10pvalue posterior_inclusion_…¹
-#>    <chr>         <chr>                  <dbl>       <dbl>                  <dbl>
-#>  1 genes/ENSG00… variants/NC_000…      -1.01         9.06                 0.0599
-#>  2 genes/ENSG00… variants/NC_000…      -0.347        7.93                 0.200 
-#>  3 genes/ENSG00… variants/NC_000…      -0.565        6.93                 0.103 
-#>  4 genes/ENSG00… variants/NC_000…       0.378        8.22                 0.0720
-#>  5 genes/ENSG00… variants/NC_000…      -0.319        6.92                 0.0422
-#>  6 genes/ENSG00… variants/NC_000…       0.349        7.54                 0.0170
-#>  7 genes/ENSG00… variants/NC_000…      -1.02         9.39                 0.144 
-#>  8 genes/ENSG00… variants/NC_000…      -0.340       10.2                  0.0234
-#>  9 genes/ENSG00… variants/NC_000…      -0.486        7.03                 0.0129
-#> 10 genes/ENSG00… variants/NC_000…      -0.325        6.55                 0.0185
+#> # A tibble: 25 × 19
+#>    gene     sequence_variant effect_size neg_log10_pvalue posterior_inclusion_…¹
+#>    <chr>    <chr>                  <dbl>            <dbl>                  <dbl>
+#>  1 genes/E… variants/NC_000…      -1.01              9.06                 0.0599
+#>  2 genes/E… variants/NC_000…      -0.347             7.93                 0.200 
+#>  3 genes/E… variants/NC_000…      -0.565             6.93                 0.103 
+#>  4 genes/E… variants/NC_000…       0.378             8.22                 0.0720
+#>  5 genes/E… variants/NC_000…      -0.319             6.92                 0.0422
+#>  6 genes/E… variants/NC_000…       0.349             7.54                 0.0170
+#>  7 genes/E… variants/NC_000…      -1.02              9.39                 0.144 
+#>  8 genes/E… variants/NC_000…      -0.340            10.2                  0.0234
+#>  9 genes/E… variants/NC_000…      -0.486             7.03                 0.0129
+#> 10 genes/E… variants/NC_000…       0.262             4.45                 0.138 
 #> # ℹ 15 more rows
 #> # ℹ abbreviated name: ¹​posterior_inclusion_probability
-#> # ℹ 13 more variables: standard_error <dbl>, z_score <dbl>,
+#> # ℹ 14 more variables: standard_error <dbl>, z_score <dbl>,
 #> #   credible_set_min_r2 <dbl>, method <chr>, source <chr>, source_url <chr>,
 #> #   label <chr>, p_value <dbl>, biological_context <chr>, biosample_term <chr>,
-#> #   study <chr>, name <chr>, class <chr>
+#> #   study <chr>, name <chr>, class <chr>, files_filesets <chr>
 gene_variants(gene_name = "GCK", effect_size="gt:0.5")
 #> # A tibble: 0 × 0
 ```
@@ -171,22 +171,26 @@ gene, we get back nested output:
 
 res <- gene_elements(gene_id = "ENSG00000187961", verbose = TRUE)
 res
-#> # A tibble: 25 × 13
+#> # A tibble: 25 × 27
 #>    name   label method class source source_url biological_context biosample_term
 #>    <chr>  <chr> <chr>  <chr> <chr>  <chr>      <chr>              <chr>         
-#>  1 expre… regu… Pertu… obse… IGVF   https://d… CD8-positive, alp… ontology_term…
-#>  2 expre… regu… Pertu… obse… IGVF   https://d… CD8-positive, alp… ontology_term…
-#>  3 expre… regu… Pertu… obse… IGVF   https://d… CD8-positive, alp… ontology_term…
-#>  4 expre… regu… Pertu… obse… IGVF   https://d… CD8-positive, alp… ontology_term…
-#>  5 expre… regu… Pertu… obse… IGVF   https://d… CD8-positive, alp… ontology_term…
-#>  6 expre… regu… Pertu… obse… IGVF   https://d… CD8-positive, alp… ontology_term…
-#>  7 expre… regu… Pertu… obse… IGVF   https://d… CD8-positive, alp… ontology_term…
-#>  8 expre… regu… Pertu… obse… IGVF   https://d… CD8-positive, alp… ontology_term…
-#>  9 expre… regu… Pertu… obse… IGVF   https://d… CD8-positive, alp… ontology_term…
-#> 10 expre… regu… Pertu… obse… IGVF   https://d… CD8-positive, alp… ontology_term…
+#>  1 expre… regu… Pertu… obse… IGVF   https://d… HCASMC-hTERT       ontology_term…
+#>  2 expre… regu… Pertu… obse… IGVF   https://d… HCASMC-hTERT       ontology_term…
+#>  3 expre… regu… Pertu… obse… IGVF   https://d… HCASMC-hTERT       ontology_term…
+#>  4 expre… regu… Pertu… obse… IGVF   https://d… HCASMC-hTERT       ontology_term…
+#>  5 expre… regu… Pertu… obse… IGVF   https://d… HCASMC-hTERT       ontology_term…
+#>  6 expre… regu… Pertu… obse… IGVF   https://d… HCASMC-hTERT       ontology_term…
+#>  7 expre… regu… Pertu… obse… IGVF   https://d… HCASMC-hTERT       ontology_term…
+#>  8 expre… regu… Pertu… obse… IGVF   https://d… HCASMC-hTERT       ontology_term…
+#>  9 expre… regu… Pertu… obse… IGVF   https://d… HCASMC-hTERT       ontology_term…
+#> 10 expre… regu… Pertu… obse… IGVF   https://d… HCASMC-hTERT       ontology_term…
 #> # ℹ 15 more rows
-#> # ℹ 5 more variables: files_filesets <chr>, score <dbl>, p_value <int>,
-#> #   genomic_element <list>, gene <list>
+#> # ℹ 19 more variables: cell_annotation <list>, cell_annotation_term <list>,
+#> #   files_filesets <chr>, crispr_modality <chr>, score <list>,
+#> #   transcription_start_site <list>, rna_pseudobulk_tpm <list>, log2FC <dbl>,
+#> #   effect_size <list>, z_score <list>, t_score <list>, idr <list>,
+#> #   p_value <dbl>, p_value_adj <dbl>, neg_log10_pvalue <dbl>,
+#> #   neg_log10_pvalue_adj <dbl>, significant <lgl>, genomic_element <list>, …
 
 #res |>
 #    tidyr::unnest_longer(elements) |>
@@ -219,26 +223,7 @@ gene id.
 ``` r
 
 db_gene_variants("ENSG00000106633", threshold = 0.85)
-#> # A tibble: 82 × 33
-#>    `_key`     `_id` `_from` `_to` `_rev` biosample_term biological_process study
-#>    <chr>      <chr> <chr>   <chr> <chr>  <chr>          <chr>              <chr>
-#>  1 cc4bdbbd9… vari… varian… gene… _lSEo… ontology_term… ontology_terms/GO… stud…
-#>  2 c30b4a47f… vari… varian… gene… _lSEo… ontology_term… ontology_terms/GO… stud…
-#>  3 98f84be97… vari… varian… gene… _lSEo… ontology_term… ontology_terms/GO… stud…
-#>  4 0ac0b3302… vari… varian… gene… _lSEo… ontology_term… ontology_terms/GO… stud…
-#>  5 8038cc8af… vari… varian… gene… _lSEo… ontology_term… ontology_terms/GO… stud…
-#>  6 6b425d3f4… vari… varian… gene… _lSEo… ontology_term… ontology_terms/GO… stud…
-#>  7 bcd7b389b… vari… varian… gene… _lSEo… ontology_term… ontology_terms/GO… stud…
-#>  8 facd9b8cc… vari… varian… gene… _lSEu… ontology_term… ontology_terms/GO… stud…
-#>  9 dd2f2af11… vari… varian… gene… _lSEu… ontology_term… ontology_terms/GO… stud…
-#> 10 448c345a9… vari… varian… gene… _lSEu… ontology_term… ontology_terms/GO… stud…
-#> # ℹ 72 more rows
-#> # ℹ 25 more variables: biological_context <chr>, label <chr>, class <chr>,
-#> #   method <chr>, source <chr>, source_url <chr>, name <chr>,
-#> #   inverse_name <chr>, molecular_trait_id <chr>, gene_id <chr>,
-#> #   credible_set_id <chr>, variant_chromosome_position_ref_alt <chr>,
-#> #   rsid <chr>, credible_set_size <int>, posterior_inclusion_probability <dbl>,
-#> #   p_value <dbl>, log10pvalue <dbl>, standard_error <dbl>, z_score <dbl>, …
+#> # A tibble: 0 × 0
 ```
 
 The AQL is
@@ -288,11 +273,11 @@ e
 #>     [4]     chr1 10006462-10006688      * |           EH38E3954143
 #>     [5]     chr1 10007231-10007550      * |           EH38E2785201
 #>     ...      ...               ...    ... .                    ...
-#>   [196]     chr1 10000983-10001482      * | genic_chr1_10000982_..
-#>   [197]     chr1 10000983-10001482      * | genic_chr1_10000982_..
-#>   [198]     chr1 10000983-10001482      * | genic_chr1_10000982_..
-#>   [199]     chr1 10000983-10001482      * | genic_chr1_10000982_..
-#>   [200]     chr1 10000983-10001482      * | genic_chr1_10000982_..
+#>   [196]     chr1 10000982-10001481      * | genic_chr1_10000981_..
+#>   [197]     chr1 10000982-10001481      * | genic_chr1_10000981_..
+#>   [198]     chr1 10000982-10001481      * | genic_chr1_10000981_..
+#>   [199]     chr1 10000982-10001810      * | genic_chr1_10000981_..
+#>   [200]     chr1 10000982-10001915      * | genic_chr1_10000981_..
 #>              source_annotation                   type      source
 #>                    <character>            <character> <character>
 #>     [1] dELS: distal Enhance.. candidate cis regula..      ENCODE
@@ -339,10 +324,10 @@ e |>
 #> # A tibble: 10 × 2
 #>    id        n
 #>    <chr> <int>
-#>  1 a       100
+#>  1 a        97
 #>  2 b        13
 #>  3 c        10
-#>  4 d        15
+#>  4 d        18
 #>  5 e        11
 #>  6 f        15
 #>  7 g        12
@@ -364,7 +349,7 @@ for more details).
 
 # up to 200 variants:
 v <- gene_variants(gene_name = "GCK", limit=200L, verbose=TRUE) |>
-  dplyr::select(-c(gene, source, source_url)) |>
+  dplyr::select(-c(gene, source, source_url, files_filesets)) |>
   tidyr::unnest_wider(sequence_variant) |>
   dplyr::rename(seqnames = chr) |>
   dplyr::mutate(start = pos + 1, end = pos + 1) |>
@@ -390,7 +375,7 @@ Renaming some columns:
 ``` r
 
 v_for_plot <- v |>
-  select(snp = rsid, p = log10pvalue, effect_size)
+  select(snp = rsid, p = neg_log10_pvalue, effect_size)
 ```
 
 To match with the correct gene annotation, we could explicitly define
@@ -505,9 +490,9 @@ sessionInfo()
 #> [11] Seqinfo_1.3.0                           
 #> [12] IRanges_2.47.2                          
 #> [13] S4Vectors_0.51.6                        
-#> [14] BiocGenerics_0.59.10                    
+#> [14] BiocGenerics_0.59.12                    
 #> [15] generics_0.1.4                          
-#> [16] rigvf_1.3.7                             
+#> [16] rigvf_1.5.2                             
 #> 
 #> loaded via a namespace (and not attached):
 #>  [1] DBI_1.3.0                   bitops_1.1-0               
@@ -525,7 +510,7 @@ sessionInfo()
 #> [25] xfun_0.60                   cachem_1.1.0               
 #> [27] cigarillo_1.3.1             GenomeInfoDb_1.49.1        
 #> [29] jsonlite_2.0.0              blob_1.3.0                 
-#> [31] rhdf5filters_1.25.3         DelayedArray_0.39.3        
+#> [31] rhdf5filters_1.25.4         DelayedArray_0.39.5        
 #> [33] Rhdf5lib_2.1.0              BiocParallel_1.47.0        
 #> [35] parallel_4.6.1              R6_2.6.1                   
 #> [37] bslib_0.12.0                RColorBrewer_1.1-3         
@@ -535,7 +520,7 @@ sessionInfo()
 #> [45] Matrix_1.7-6                tidyselect_1.2.1           
 #> [47] abind_1.4-8                 yaml_2.3.12                
 #> [49] codetools_0.2-20            curl_7.1.0                 
-#> [51] rjsoncons_1.3.3             lattice_0.22-9             
+#> [51] rjsoncons_1.3.3             lattice_0.23-1             
 #> [53] withr_3.0.3                 KEGGREST_1.53.6            
 #> [55] S7_0.2.2                    evaluate_1.0.5             
 #> [57] gridGraphics_0.5-1          desc_1.4.3                 
@@ -546,7 +531,7 @@ sessionInfo()
 #> [67] tools_4.6.1                 BiocIO_1.23.3              
 #> [69] data.table_1.18.4           GenomicAlignments_1.49.1   
 #> [71] fs_2.1.0                    XML_3.99-0.23              
-#> [73] rhdf5_2.57.3                grid_4.6.1                 
+#> [73] rhdf5_2.57.10               grid_4.6.1                 
 #> [75] tidyr_1.3.2                 restfulr_0.0.17            
 #> [77] cli_3.6.6                   rappdirs_0.3.4             
 #> [79] textshaping_1.0.5           S4Arrays_1.13.0            
