@@ -1,4 +1,8 @@
-# rigvf 1.3.7
+# rigvf 1.5.3
+
+* Dealt with changes in the Catalog API causing vignette issues
+
+# rigvf 1.5.2
 
 * Added `portal_files()` to query files from the IGVF Data Portal by content type
 
