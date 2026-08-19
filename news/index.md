@@ -1,6 +1,10 @@
 # Changelog
 
-## rigvf 1.3.7
+## rigvf 1.5.3
+
+- Dealt with changes in the Catalog API causing vignette issues
+
+## rigvf 1.5.2
 
 - Added
   [`portal_files()`](https://IGVF.github.io/rigvf/reference/portal_queries.md)

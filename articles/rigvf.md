@@ -492,7 +492,7 @@ sessionInfo()
 #> [13] S4Vectors_0.51.6                        
 #> [14] BiocGenerics_0.59.12                    
 #> [15] generics_0.1.4                          
-#> [16] rigvf_1.5.2                             
+#> [16] rigvf_1.5.3                             
 #> 
 #> loaded via a namespace (and not attached):
 #>  [1] DBI_1.3.0                   bitops_1.1-0               
