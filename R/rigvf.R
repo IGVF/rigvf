@@ -90,7 +90,7 @@ rigvf_config <- local({
     set("db_name", "igvf")
     ## 'guest' as default user
     set("username", "guest")
-    set("password", "guestigvfcatalog")
+    set("password", "guestdaccigvfcatalog")
     ## functionality
     list(ls = ls, get = get, set = set)
 })
