@@ -44,9 +44,9 @@ db_gene_elements(
 
 - password:
 
-  character(1) ArangoDB password. Default: "guestigvfcatalog". A better
-  practice is to use an environment variable to record the password,
-  rather than encoding in a script, so
+  character(1) ArangoDB password. Default: "guestdaccigvfcatalog". A
+  better practice is to use an environment variable to record the
+  password, rather than encoding in a script, so
   `password = Sys.getenv("RIGVF_ARANGODB_PASSWORD")`.
 
 - gene_id:
@@ -73,36 +73,36 @@ associated with the gene.
 
 ``` r
 db_edges()
-#> # A tibble: 35 × 2
-#>    name                                   count
-#>    <chr>                                  <dbl>
-#>  1 variants_variants                 5926156444
-#>  2 coding_variants_phenotypes        1096014005
-#>  3 variants_coding_variants           942433097
-#>  4 variants_proteins                  363608815
-#>  5 genomic_elements_genes             187515481
-#>  6 variants_biosamples                 76034335
-#>  7 variants_genes                      18926583
-#>  8 proteins_proteins                   11486365
-#>  9 transcripts_genes_structure          4819495
-#> 10 mm_transcripts_mm_genes_structure    3142359
-#> # ℹ 25 more rows
+#> # A tibble: 36 × 2
+#>    name                             count
+#>    <chr>                            <dbl>
+#>  1 variants_variants           5979387121
+#>  2 coding_variants_phenotypes  1096014005
+#>  3 variants_coding_variants     942433097
+#>  4 variants_proteins            345127564
+#>  5 genomic_elements_genes       187575324
+#>  6 variants_biosamples           76034335
+#>  7 variants_genes                18926078
+#>  8 proteins_proteins             11062947
+#>  9 genes_genes_SCORPION_QA        5201604
+#> 10 transcripts_genes_structure    4819495
+#> # ℹ 26 more rows
 
 db_nodes()
-#> # A tibble: 27 × 2
+#> # A tibble: 28 × 2
 #>    name                     count
 #>    <chr>                    <dbl>
-#>  1 variants            1870948004
+#>  1 variants            1870948772
 #>  2 coding_variants      942423560
-#>  3 genomic_elements      93483021
+#>  3 genomic_elements      93496061
 #>  4 mm_variants           53413453
 #>  5 variants_IGVF         17338787
 #>  6 genes_structure        4819495
-#>  7 mm_genes_structure     3142359
-#>  8 mm_genomic_elements     926843
-#>  9 ontology_terms          869236
-#> 10 mm_transcripts          278375
-#> # ℹ 17 more rows
+#>  7 json_schema_test       3538462
+#>  8 mm_genes_structure     3142359
+#>  9 mm_genomic_elements     926845
+#> 10 ontology_terms          869237
+#> # ℹ 18 more rows
 
 db_gene_variants("ENSG00000106633", threshold = 4.0)
 #> # A tibble: 0 × 0

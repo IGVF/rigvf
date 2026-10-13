@@ -17,7 +17,7 @@ db_gene_elements() locates genomic elements associated with a
 
     <a class="navbar-brand me-2" href="../index.html">rigvf</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.5.3</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.5.5</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -90,7 +90,7 @@ data base.</p>
 
 <dt id="arg-password">password<a class="anchor" aria-label="anchor" href="#arg-password"></a></dt>
 <dd><p>character(1) ArangoDB password. Default:
-"guestigvfcatalog". A better practice is to use an environment
+"guestdaccigvfcatalog". A better practice is to use an environment
 variable to record the password, rather than encoding in a
 script, so <code>password = Sys.getenv("RIGVF_ARANGODB_PASSWORD")</code>.</p></dd>
 
@@ -117,36 +117,36 @@ associated with the gene.</p>
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">db_edges</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 35 × 2</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    name                                   count</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> variants_variants                 <span style="text-decoration: underline;">5</span>926<span style="text-decoration: underline;">156</span>444</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> coding_variants_phenotypes        <span style="text-decoration: underline;">1</span>096<span style="text-decoration: underline;">014</span>005</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> variants_coding_variants           942<span style="text-decoration: underline;">433</span>097</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> variants_proteins                  363<span style="text-decoration: underline;">608</span>815</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> genomic_elements_genes             187<span style="text-decoration: underline;">515</span>481</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> variants_biosamples                 76<span style="text-decoration: underline;">034</span>335</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> variants_genes                      18<span style="text-decoration: underline;">926</span>583</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> proteins_proteins                   11<span style="text-decoration: underline;">486</span>365</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> transcripts_genes_structure          4<span style="text-decoration: underline;">819</span>495</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> mm_transcripts_mm_genes_structure    3<span style="text-decoration: underline;">142</span>359</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 25 more rows</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 36 × 2</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    name                             count</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                            <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> variants_variants           <span style="text-decoration: underline;">5</span>979<span style="text-decoration: underline;">387</span>121</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> coding_variants_phenotypes  <span style="text-decoration: underline;">1</span>096<span style="text-decoration: underline;">014</span>005</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> variants_coding_variants     942<span style="text-decoration: underline;">433</span>097</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> variants_proteins            345<span style="text-decoration: underline;">127</span>564</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> genomic_elements_genes       187<span style="text-decoration: underline;">575</span>324</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> variants_biosamples           76<span style="text-decoration: underline;">034</span>335</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> variants_genes                18<span style="text-decoration: underline;">926</span>078</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> proteins_proteins             11<span style="text-decoration: underline;">062</span>947</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> genes_genes_SCORPION_QA        5<span style="text-decoration: underline;">201</span>604</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> transcripts_genes_structure    4<span style="text-decoration: underline;">819</span>495</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 26 more rows</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">db_nodes</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 27 × 2</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 28 × 2</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    name                     count</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> variants            <span style="text-decoration: underline;">1</span>870<span style="text-decoration: underline;">948</span>004</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> variants            <span style="text-decoration: underline;">1</span>870<span style="text-decoration: underline;">948</span>772</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> coding_variants      942<span style="text-decoration: underline;">423</span>560</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> genomic_elements      93<span style="text-decoration: underline;">483</span>021</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> genomic_elements      93<span style="text-decoration: underline;">496</span>061</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> mm_variants           53<span style="text-decoration: underline;">413</span>453</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> variants_IGVF         17<span style="text-decoration: underline;">338</span>787</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> genes_structure        4<span style="text-decoration: underline;">819</span>495</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> mm_genes_structure     3<span style="text-decoration: underline;">142</span>359</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> mm_genomic_elements     <span style="text-decoration: underline;">926</span>843</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> ontology_terms          <span style="text-decoration: underline;">869</span>236</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> mm_transcripts          <span style="text-decoration: underline;">278</span>375</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 17 more rows</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> json_schema_test       3<span style="text-decoration: underline;">538</span>462</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> mm_genes_structure     3<span style="text-decoration: underline;">142</span>359</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> mm_genomic_elements     <span style="text-decoration: underline;">926</span>845</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> ontology_terms          <span style="text-decoration: underline;">869</span>237</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 18 more rows</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">db_gene_variants</span><span class="op">(</span><span class="st">"ENSG00000106633"</span>, threshold <span class="op">=</span> <span class="fl">4.0</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 0 × 0</span></span>

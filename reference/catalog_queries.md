@@ -202,7 +202,7 @@ rigvf::variant_genes(spdi = "NC_000001.11:920568:G:A")
 #> # A tibble: 0 × 0
 
 rigvf::gene_elements(gene_id = "ENSG00000187961")
-#> # A tibble: 25 × 27
+#> # A tibble: 25 × 42
 #>    name   label method class source source_url biological_context biosample_term
 #>    <chr>  <chr> <chr>  <chr> <chr>  <chr>      <chr>              <chr>         
 #>  1 expre… regu… Pertu… obse… IGVF   https://d… HCASMC-hTERT       ontology_term…
@@ -216,12 +216,12 @@ rigvf::gene_elements(gene_id = "ENSG00000187961")
 #>  9 expre… regu… Pertu… obse… IGVF   https://d… HCASMC-hTERT       ontology_term…
 #> 10 expre… regu… Pertu… obse… IGVF   https://d… HCASMC-hTERT       ontology_term…
 #> # ℹ 15 more rows
-#> # ℹ 19 more variables: cell_annotation <list>, cell_annotation_term <list>,
-#> #   files_filesets <chr>, crispr_modality <chr>, score <list>,
-#> #   transcription_start_site <list>, rna_pseudobulk_tpm <list>, log2FC <dbl>,
-#> #   effect_size <list>, z_score <list>, t_score <list>, idr <list>,
-#> #   p_value <dbl>, p_value_adj <dbl>, neg_log10_pvalue <dbl>,
-#> #   neg_log10_pvalue_adj <dbl>, significant <lgl>, genomic_element <chr>, …
+#> # ℹ 34 more variables: cell_annotation <list>, cell_annotation_term <list>,
+#> #   treatments_term_ids <list>, files_filesets <chr>, crispr_modality <chr>,
+#> #   score <list>, transcription_start_site <list>, rna_pseudobulk_tpm <list>,
+#> #   log2FC <dbl>, log2FC_ci95_lower <list>, log2FC_ci95_upper <list>,
+#> #   effect_size <list>, effect_size_ci_95 <list>, z_score <list>,
+#> #   t_score <list>, idr <list>, pct_1 <list>, pct_2 <list>, …
 
 rng <- GenomicRanges::GRanges("chr1", IRanges::IRanges(1157520,1158189))
 
@@ -270,7 +270,7 @@ rigvf::elements(range = rng)
 #>   seqinfo: 1 sequence from hg38 genome; no seqlengths
 
 rigvf::element_genes(range = rng)
-#> # A tibble: 25 × 27
+#> # A tibble: 25 × 42
 #>    name   label method class source source_url biological_context biosample_term
 #>    <chr>  <chr> <chr>  <chr> <chr>  <chr>      <list>             <list>        
 #>  1 regul… pred… scE2G  pred… IGVF   https://d… <chr [1]>          <chr [1]>     
@@ -284,10 +284,10 @@ rigvf::element_genes(range = rng)
 #>  9 regul… pred… ENCOD… pred… ENCODE https://w… <chr [1]>          <chr [1]>     
 #> 10 regul… pred… ENCOD… pred… ENCODE https://w… <chr [1]>          <chr [1]>     
 #> # ℹ 15 more rows
-#> # ℹ 19 more variables: cell_annotation <list>, cell_annotation_term <list>,
-#> #   files_filesets <chr>, crispr_modality <list>, score <dbl>,
-#> #   transcription_start_site <list>, rna_pseudobulk_tpm <list>, log2FC <list>,
-#> #   effect_size <list>, z_score <list>, t_score <list>, idr <list>,
-#> #   p_value <list>, p_value_adj <list>, neg_log10_pvalue <list>,
-#> #   neg_log10_pvalue_adj <list>, significant <list>, genomic_element <chr>, …
+#> # ℹ 34 more variables: cell_annotation <list>, cell_annotation_term <list>,
+#> #   treatments_term_ids <list>, files_filesets <chr>, crispr_modality <list>,
+#> #   score <dbl>, transcription_start_site <list>, rna_pseudobulk_tpm <list>,
+#> #   log2FC <list>, log2FC_ci95_lower <list>, log2FC_ci95_upper <list>,
+#> #   effect_size <list>, effect_size_ci_95 <list>, z_score <list>,
+#> #   t_score <list>, idr <list>, pct_1 <list>, pct_2 <list>, …
 ```

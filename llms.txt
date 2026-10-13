@@ -12,11 +12,9 @@ around associations among genetic variants, genomic elements, and genes.
 Install the development version from
 [GitHub](https://github.com/IGVF/rigvf) with:
 
-``` r
-
-## install.packages("BiocManager") # if not installed
-BiocManager::install("IGVF/rigvf")
-```
+\
+`## install.packages("BiocManager") # if not installed`\
+`BiocManager``::`[`install`](https://bioconductor.github.io/BiocManager/reference/install.html)`(``"IGVF/rigvf"``)`
 
 ## Using `rigvf`
 

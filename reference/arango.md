@@ -62,9 +62,9 @@ arango_cursor(
 
 - password:
 
-  character(1) ArangoDB password. Default: "guestigvfcatalog". A better
-  practice is to use an environment variable to record the password,
-  rather than encoding in a script, so
+  character(1) ArangoDB password. Default: "guestdaccigvfcatalog". A
+  better practice is to use an environment variable to record the
+  password, rather than encoding in a script, so
   `password = Sys.getenv("RIGVF_ARANGODB_PASSWORD")`.
 
 - query:
